@@ -31,12 +31,7 @@ https://github.com/felixx10mil/api_express_sequelize
 cd api_express_sequelize
 ```
 
-Create the .env file.
-
-```bash
-DB_URL = http://127.0.0.1:3000/
-PORT = 3000
-```
+Create .env file from .env.example file
 
 Install the dependencies.
 
