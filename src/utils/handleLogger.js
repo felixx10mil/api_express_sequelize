@@ -1,5 +1,4 @@
 import { createLogger, format, transports, config } from 'winston';
-// const DailyRotateFile = require('winston-daily-rotate-file');
 
 const customLevels = {
 	levels: {
@@ -33,7 +32,7 @@ const logger = createLogger({
 		new transports.File({
 			maxsize: 5120000,
 			maxFiles: 3,
-			filename: `${__dirname}/../storage/logs/api.log`,
+			filename: `${__dirname}/../logger/api.log`,
 		}),
 	],
 });
