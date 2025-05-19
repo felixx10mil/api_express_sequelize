@@ -1,15 +1,14 @@
 import fs from 'fs/promises';
 
 /**
- * Delete file
- *
- * @param {*} photo
- * @returns true / error
+ * Name file
+ * @param {*} file
+ * @returns
  */
 
-const deleteFile = async photo => {
+const deleteFile = async file => {
 	try {
-		const url = `${__dirname}/../storage/files/${photo}`;
+		const url = `${__dirname}/../storage/files/${file}`;
 		await fs.unlink(url);
 		return true;
 	} catch (e) {

@@ -1,6 +1,5 @@
 /**
- * Return array
- *
+ * Roles user
  * @param {*} roles
  * @returns
  */

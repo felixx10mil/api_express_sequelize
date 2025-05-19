@@ -2,10 +2,10 @@ import 'dotenv/config';
 import jwt from 'jsonwebtoken';
 
 /**
- * Recibe id de usuario y tiempo de expiración (1,1h)
+ * Payload and time expire
  * @param {*} user
  * @param {*} expire
- * @returns token
+ * @returns
  */
 const signToken = async (user, expire) => {
 	const token = jwt.sign(user, process.env.JWT_SECRET, {
@@ -15,10 +15,9 @@ const signToken = async (user, expire) => {
 };
 
 /**
- * Verify token
- *
+ * Token
  * @param {*} token
- * @returns decode / null
+ * @returns
  */
 const verifyToken = async token => {
 	try {

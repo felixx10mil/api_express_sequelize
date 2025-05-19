@@ -1,22 +1,20 @@
 import bcrypt from 'bcryptjs';
 
 /**
- * Encrypt pass
- *
+ * Password text plain
  * @param {*} passwordPlain
- * @returns password emcriptado
+ * @returns
  */
 
 const encryptPass = async passwordPlain => {
-	const hash = await bcrypt.hash(passwordPlain, 10);
-	return hash;
+	return await bcrypt.hash(passwordPlain, 10);
 };
 
 /**
- * Compare pass
+ * Password text plaint and hash password user
  * @param {*} passwordPlain
  * @param {*} hashPassword
- * @returns  true /false
+ * @returns
  */
 
 const comparePass = async (passwordPlain, hashPassword) => {

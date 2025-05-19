@@ -1,6 +1,5 @@
 /**
- * Get paginate
- *
+ * Page and size
  * @param {*} page
  * @param {*} size
  * @returns
@@ -13,8 +12,7 @@ const getPagination = (page, size) => {
 };
 
 /**
- * Get paging data
- *
+ * data, page and limit
  * @param {*} data
  * @param {*} page
  * @param {*} limit
