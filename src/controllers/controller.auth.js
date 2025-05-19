@@ -1,7 +1,6 @@
 import createError from 'http-errors';
 import { matchedData } from 'express-validator';
 import serviceAuth from '../services/service.auth.js';
-import { response } from 'express';
 
 /**
  * Signup

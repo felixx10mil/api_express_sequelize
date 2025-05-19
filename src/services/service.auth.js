@@ -59,7 +59,7 @@ const signup = async (email, password) => {
 		template: 'email_confirm.ejs',
 	});
 
-	return 'Successfully registered';
+	return 'You have successfully registered, please check your email address.';
 };
 /**
  * Sing in

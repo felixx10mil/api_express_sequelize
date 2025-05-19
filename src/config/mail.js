@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import nodemailer from 'nodemailer';
 import ejs from 'ejs';
 import fs from 'fs';

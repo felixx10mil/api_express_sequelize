@@ -16,7 +16,7 @@ let sequelize = new Sequelize(
 		host: config.host,
 		port: config.port,
 		dialect: config.dialect,
-		logging: process.env.NODE_ENV === 'production' ? false : console.log,
+		logging: env === 'production' ? false : console.log,
 	},
 );
 // Asociations
