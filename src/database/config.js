@@ -5,7 +5,7 @@ module.exports = {
 		database: 'api_express_sequelize',
 		host: '127.0.0.1',
 		port: 3306,
-		dialect: process.env.DB_DIALECT,
+		dialect: 'mysql',
 		dialectOptions: {
 			bigNumberStrings: true,
 		},
@@ -23,9 +23,10 @@ module.exports = {
 		dialect: process.env.DB_DIALECT,
 		dialectOptions: {
 			bigNumberStrings: true,
-			// ssl: {
-			// 	ca: fs.readFileSync(__dirname + '/mysql-ca-main.crt'),
-			// },
 		},
 	},
 };
+
+// ssl: {
+// 	ca: fs.readFileSync(__dirname + '/mysql-ca-main.crt'),
+// },

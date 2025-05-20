@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import app from '../app.js';
 import { sequelize } from '../models/index.js';
 import logger from '../utils/handleLogger.js';
