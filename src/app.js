@@ -39,7 +39,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'storage')));
 
 //  Routes
-app.use('/api/', routeHome);
+app.use('/api/v1/', routeHome);
 app.use('/api/v1/auth', routeAuth);
 app.use('/api/v1/users', routeUser);
 app.use('/api/v1/admin', routeAdmin);

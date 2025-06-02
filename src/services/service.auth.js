@@ -47,7 +47,7 @@ const signup = async (email, password) => {
 	);
 
 	// Link
-	const link = `${process.env.DOMAIN_ACCEPTED}/confirm/account?token=${token}`;
+	const link = `${process.env.DOMAIN_PRODUCTION}/confirm/account?token=${token}`;
 
 	// Enviar email
 	await mail({
@@ -177,7 +177,7 @@ const forgotPassword = async email => {
 	// Genera un token
 	const token = await signToken({ user: user.id }, process.env.JWT_FORGOT_PASS);
 	// Generate link
-	const link = `${process.env.DOMAIN_ACCEPTED}/reset/password?token=${token}`;
+	const link = `${process.env.DOMAIN_PRODUCTION}/reset/password?token=${token}`;
 
 	// Envia un email
 	await mail({
