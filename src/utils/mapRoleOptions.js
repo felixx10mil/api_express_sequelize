@@ -9,7 +9,7 @@ const mapRoleOptions = async roles => {
 			return {
 				label: role.name,
 				value: role.id,
-				disable: role.name === 'sadmin' ? true : false,
+				disable: role.name === 'user' ? true : false,
 			};
 		});
 		return response;

@@ -1,5 +1,6 @@
-import deleteFile from '../utils/deleteFile.js';
+import { Op } from 'sequelize';
 import { User, Role } from '../models/index.js';
+import deleteFile from '../utils/deleteFile.js';
 import mapRoleOptions from '../utils/mapRoleOptions.js';
 
 /**
@@ -32,6 +33,9 @@ const getAllUsers = async () => {
 const getAllRoles = async id => {
 	// Find roles all
 	const roles = await Role.findAll({
+		where: {
+			name: { [Op.ne]: 'sadmin' },
+		},
 		attributes: ['id', 'name'],
 	});
 	// Find roles by user
@@ -40,6 +44,9 @@ const getAllRoles = async id => {
 		include: [
 			{
 				association: 'roles',
+				where: {
+					name: { [Op.ne]: 'sadmin' },
+				},
 				attributes: ['id'],
 				through: {
 					attributes: [],
