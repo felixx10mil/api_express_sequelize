@@ -101,6 +101,7 @@ const profileUpdate = async (req, res, next) => {
 
 const photoUpdate = async (req, res, next) => {
 	const { filename } = req.file;
+
 	const { id } = matchedData(req);
 
 	if (!id) {

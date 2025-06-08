@@ -1,6 +1,7 @@
 import { User, Profile } from '../models/index.js';
 import { comparePass } from '../utils/handleBcrypt.js';
 import deleteFile from '../utils/deleteFile.js';
+import resizeImage from '../utils/resizeImage.js';
 
 /**
  * Return user
@@ -131,7 +132,7 @@ const profileUpdate = async (id, body) => {
  * @returns
  */
 
-const photoUpdate = async (id, photo) => {
+const photoUpdate = async (id, file) => {
 	const profile = await Profile.findOne({ where: { user_id: id } });
 	if (!profile) {
 		throw {
@@ -140,13 +141,24 @@ const photoUpdate = async (id, photo) => {
 		};
 	}
 
-	// Borrar avatar
-	if (!(profile.avatar === 'avatar_default.png' || profile.avatar === null)) {
-		await deleteFile(profile.avatar); // TODO:revisar
+	// Resize image
+	// TODO:check
+	const resizedImage = await resizeImage(file, 128, 128); // name file,width:,height,
+	if (!resizeImage) {
+		throw {
+			status: 500,
+			message: 'ERROR',
+		};
+	}
+	//TODO:end check
+
+	// Delete previous image
+	if (profile.avatar != 'avatar_default.png') {
+		await deleteFile(profile.avatar);
 	}
 
 	// Set profie
-	profile.set({ avatar: photo });
+	profile.set({ avatar: resizedImage });
 
 	// Update rofile
 	profile.save();

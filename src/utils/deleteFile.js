@@ -7,8 +7,8 @@ import fs from 'fs/promises';
  */
 
 const deleteFile = async file => {
+	const url = `${__dirname}/../storage/files/${file}`;
 	try {
-		const url = `${__dirname}/../storage/files/${file}`;
 		await fs.unlink(url);
 		return true;
 	} catch (e) {

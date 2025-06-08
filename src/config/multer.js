@@ -1,30 +1,28 @@
 import multer from 'multer';
-import path from 'path';
+
+const mimetype = ['image/jpeg', 'image/jpg'];
+const urlStorage = `${__dirname}/../storage/files/`;
 
 // Config storage
 const storage = multer.diskStorage({
-	destination: function (req, file, cb) {
-		const pathStorage = path.resolve(__dirname, '../storage/files');
-		cb(null, pathStorage);
+	destination: (req, file, cb) => {
+		cb(null, urlStorage);
 	},
-	filename: function (req, file, cb) {
-		const ext = file.originalname.split('.').pop();
-		const filename = `file-${Date.now()}.${ext}`;
+	filename: (req, file, cb) => {
+		const extFilename = file.originalname.split('.').pop();
+		const filename = `file-${Date.now()}.${extFilename}`;
 		cb(null, filename);
 	},
 });
 
 // Config file
-const whitelist = ['image/jpeg', 'image/jpg'];
 const upload = multer({
 	storage,
-	limits: { fileSize: 1024 * 1024 }, // 1MB
 	fileFilter: (req, file, cb) => {
-		if (whitelist.includes(file.mimetype)) {
-			return cb(null, true);
-		}
-		cb(new Error('Error in file format.'));
+		if (mimetype.includes(file.mimetype)) cb(null, true);
+		else cb(new Error('Error in file format.'));
 	},
+	limits: { fileSize: 1024 * 1024 }, // 1MB,
 });
 
 module.exports = upload;

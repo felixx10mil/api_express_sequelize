@@ -12,6 +12,7 @@ import routeHome from './routes/v1/route.home.js';
 import routeAuth from './routes/v1/route.auth.js';
 import routeUser from './routes/v1/route.user.js';
 import routeAdmin from './routes/v1/route.admin.js';
+import routePayment from './routes/v1/route.payment.js';
 
 //  App
 const app = express();
@@ -43,6 +44,7 @@ app.use('/api/v1/', routeHome);
 app.use('/api/v1/auth', routeAuth);
 app.use('/api/v1/users', routeUser);
 app.use('/api/v1/admin', routeAdmin);
+app.use('/api/v1/payments', routePayment);
 
 // Error 404
 app.use(handleError404);
