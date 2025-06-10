@@ -3,6 +3,13 @@ import { User } from '../models/index.js';
 import validateResults from './validateResult.js';
 
 const signup = [
+	check('fullName')
+		.exists()
+		.withMessage('The fullName field is required.')
+		.notEmpty()
+		.withMessage('The fullName field cannot be empty.')
+		.matches(/^([\w]{4,})+\s+([\w\s]{4,})+$/)
+		.withMessage('The fullName field must contain a space.'),
 	check('email')
 		.exists()
 		.withMessage('The email field is required.')

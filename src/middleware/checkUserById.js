@@ -16,7 +16,7 @@ const checkUserById = async (req, res, next) => {
 		}
 		next();
 	} catch (e) {
-		return next(createError('UNAUTHORIZED_USER_ERROR'));
+		return next(createError('UNAUTHORIZED_USER'));
 	}
 };
 

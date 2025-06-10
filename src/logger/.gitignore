@@ -1,9 +1,9 @@
-# .gitignore to keep just .txt files
+# .gitignore to keep just .log files
 # Filter everything...
 *
 
 # ... except the .gitignore...
 !.gitignore
 
-# ... and all text files.
+# ... and all t files.
 !*.log

@@ -5,19 +5,18 @@ import { User } from '../models/index.js';
 import mail from '../config/mail.js';
 import mapRole from '../utils/mapRoleAuth.js';
 
-// TODO: 👁 se recomienda crear una llave distinta para cada token generado
-
 /**
  * Register user
  *
- * @param {*} name
+ * @param {*} fullName
  * @param {*} email
  * @param {*} password
  * @returns
  */
 
-const signup = async (email, password) => {
+const signup = async (fullName, email, password) => {
 	const name = email.split('@')[0];
+	const [first_name, last_name] = fullName.split(' ');
 	// Registra el usuario
 	const user = await User.create(
 		{
@@ -27,8 +26,8 @@ const signup = async (email, password) => {
 			password,
 			status: 'inactive',
 			profile: {
-				first_name: 'write your first name',
-				last_name: 'write your last name',
+				first_name,
+				last_name,
 				biography: 'write your biography',
 				avatar: 'avatar_default.png',
 			},
@@ -38,7 +37,7 @@ const signup = async (email, password) => {
 		},
 	);
 	// Setear los roles
-	await user.setRoles(1); //👈👈 // TODO:revisra con cual role relaciona
+	await user.setRoles(1); //👈👈 // TODO:revisar con cual role relaciona
 
 	// Generar un token
 	const token = await signToken(
