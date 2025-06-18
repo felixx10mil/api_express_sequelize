@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import { comparePass } from '../utils/handleBcrypt.js';
 import { signToken, verifyToken } from '../utils/handleJwt.js';
 import { User } from '../models/index.js';
@@ -42,7 +41,8 @@ const signup = async (fullName, email, password) => {
 	// Generar un token
 	const token = await signToken(
 		{ user: user.id },
-		process.env.JWT_REGISTER_TOKEN,
+		process.env.SECRET_REGISTER_PASSWORD,
+		process.env.REGISTER_PASSWORD_EXPIRE,
 	);
 
 	// Link
@@ -71,7 +71,14 @@ const signin = async (email, password) => {
 	// Consultar el usuario por el email
 	const user = await User.findOne({
 		where: { email },
-		attributes: ['id', 'name', 'email', 'status', 'password'],
+		attributes: [
+			'id',
+			'name',
+			'email',
+			'email_verified_at',
+			'status',
+			'password',
+		],
 		include: [
 			{
 				association: 'roles',
@@ -91,19 +98,27 @@ const signin = async (email, password) => {
 		};
 	}
 
+	// Verifica si la cuenta esta activa
+	if (!(user.status === 'active')) {
+		throw {
+			status: 400,
+			message: 'INACTIVE_ACCOUNT',
+		};
+	}
+
+	// Verifica si el email esta verificado
+	if (user.email_verified_at === null || user.email_verified_at === '') {
+		throw {
+			status: 400,
+			message: 'EMAIL_NOT_VERIFIED',
+		};
+	}
+
 	// Verifica la contraseña
 	if (!(await comparePass(password, user.password))) {
 		throw {
 			status: 400,
 			message: 'INVALID_PASSWORD',
-		};
-	}
-
-	// Verifica si la cuenta esta activa
-	if (user.status !== 'active') {
-		throw {
-			status: 400,
-			message: 'INACTIVE_USER',
 		};
 	}
 
@@ -113,11 +128,16 @@ const signin = async (email, password) => {
 	// Generamos el token firmado con el id del usuario y los roles
 	const token = await signToken(
 		{ user: user.id, roles: roles },
-		process.env.JWT_SESSION,
+		process.env.SECRET_SESSION,
+		process.env.SESSION_EXPIRE,
 	);
 
 	// Set password and status to undefined
-	user.set({ password: undefined, status: undefined });
+	user.set({
+		password: undefined,
+		status: undefined,
+		email_verified_at: undefined,
+	});
 
 	// return data
 	return {
@@ -132,7 +152,10 @@ const signin = async (email, password) => {
  * @returns
  */
 const confirmAccount = async token => {
-	const dataToken = await verifyToken(token);
+	const dataToken = await verifyToken(
+		token,
+		process.env.SECRET_REGISTER_PASSWORD,
+	);
 	if (!dataToken) {
 		throw {
 			status: 401,
@@ -147,8 +170,8 @@ const confirmAccount = async token => {
 			message: 'USER_NOT_FOUND',
 		};
 	}
-	// Actualiza email_verified_at y el status
-	user.set({ email_verified_at: new Date(), status: 'active' });
+	// Actualiza email_verified_at
+	user.set({ email_verified_at: new Date() });
 	await user.save();
 
 	// Enviar respuesta
@@ -164,8 +187,9 @@ const forgotPassword = async email => {
 	// Busca el usuario
 	const user = await User.findOne({
 		where: { email },
-		attributes: ['id', 'name'],
+		attributes: ['id', 'name', 'status', 'email_verified_at'],
 	});
+	// Si user no existe
 	if (!user) {
 		throw {
 			status: 404,
@@ -173,8 +197,28 @@ const forgotPassword = async email => {
 		};
 	}
 
+	// Verifica si la cuenta esta activa
+	if (!(user.status === 'active')) {
+		throw {
+			status: 400,
+			message: 'INACTIVE_ACCOUNT',
+		};
+	}
+
+	// Verifica si el email esta verificado
+	if (user.email_verified_at === null || user.email_verified_at === '') {
+		throw {
+			status: 400,
+			message: 'EMAIL_NOT_VERIFIED',
+		};
+	}
+
 	// Genera un token
-	const token = await signToken({ user: user.id }, process.env.JWT_FORGOT_PASS);
+	const token = await signToken(
+		{ user: user.id },
+		process.env.SECRET_RESET_PASSWORD,
+		process.env.RESET_PASSWORD_EXPIRE,
+	);
 	// Generate link
 	const link = `${process.env.DOMAIN_PRODUCTION}/reset/password?token=${token}`;
 
@@ -200,7 +244,7 @@ const forgotPassword = async email => {
  */
 const resetPassword = async (token, password) => {
 	// Verifiica el token
-	const dataToken = await verifyToken(token);
+	const dataToken = await verifyToken(token, process.env.SECRET_RESET_PASSWORD);
 	if (!dataToken) {
 		throw {
 			status: 403,

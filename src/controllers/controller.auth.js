@@ -41,14 +41,14 @@ const signin = async (req, res, next) => {
 		const { user, token } = await serviceAuth.signin(email, password);
 
 		// Genera una cookie
-		const expiryDate = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
-		res.cookie('access_token', token, {
-			secure: false,
-			httpOnly: true,
-			domain: 'example.com',
-			path: 'foo/bar',
-			expires: expiryDate,
-		});
+		// const expiryDate = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
+		// res.cookie('access_token', token, {
+		// 	secure: false,
+		// 	httpOnly: true,
+		// 	domain: 'example.com',
+		// 	path: 'foo/bar',
+		// 	expires: expiryDate,
+		// });
 
 		res.status(200).json({
 			status: 'OK',

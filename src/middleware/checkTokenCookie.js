@@ -15,7 +15,7 @@ const checkTokenCookie = async (req, res, next) => {
 		return next(createError(404, 'NOT_TOKEN'));
 	}
 	try {
-		const dataToken = await verifyToken(token);
+		const dataToken = await verifyToken(token, process.env.SECRET_SESSION);
 		req.user = dataToken.user;
 		req.roles = dataToken.roles;
 		next();

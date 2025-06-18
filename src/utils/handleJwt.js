@@ -1,26 +1,28 @@
 import jwt from 'jsonwebtoken';
 
 /**
- * Payload and time expire
- * @param {*} user
+ * SignToken
+ * @param {*} peyload
+ * @param {*} secret
  * @param {*} expire
  * @returns
  */
-const signToken = async (user, expire) => {
-	const token = jwt.sign(user, process.env.JWT_SECRET, {
+const signToken = async (peyload, secret, expire) => {
+	const token = jwt.sign(peyload, secret, {
 		expiresIn: expire,
 	});
 	return token;
 };
 
 /**
- * Token
+ * verifyToken
  * @param {*} token
+ * @param {*} secret
  * @returns
  */
-const verifyToken = async token => {
+const verifyToken = async (token, secret) => {
 	try {
-		return jwt.verify(token, process.env.JWT_SECRET);
+		return jwt.verify(token, secret);
 	} catch (e) {
 		return null;
 	}
