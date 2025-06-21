@@ -9,21 +9,25 @@ import mapRoleOptions from '../utils/mapRoleOptions.js';
  * @returns
  */
 const getAllUsers = async () => {
-	// Find users
-	const users = await User.findAll({
-		attributes: {
-			exclude: ['password', 'status', 'email_verified_at'],
-		},
-		include: [
-			{
-				association: 'profile',
-				attributes: ['avatar'],
+	try {
+		// Find users
+		const users = await User.findAll({
+			attributes: {
+				exclude: ['password', 'status', 'email_verified_at'],
 			},
-		],
-		order: [['createdAt', 'DESC']],
-	});
-	// Response
-	return users;
+			include: [
+				{
+					association: 'profile',
+					attributes: ['avatar'],
+				},
+			],
+			order: [['createdAt', 'DESC']],
+		});
+		// Response
+		return users;
+	} catch (e) {
+		throw e;
+	}
 };
 /**
  * Return roles
@@ -31,41 +35,45 @@ const getAllUsers = async () => {
  * @returns
  */
 const getAllRoles = async id => {
-	// Find roles all
-	const roles = await Role.findAll({
-		where: {
-			name: { [Op.ne]: 'sadmin' },
-		},
-		attributes: ['id', 'name'],
-	});
-	// Find roles by user
-	const roleUser = await User.findByPk(id, {
-		attributes: [],
-		include: [
-			{
-				association: 'roles',
-				where: {
-					name: { [Op.ne]: 'sadmin' },
-				},
-				attributes: ['id'],
-				through: {
-					attributes: [],
-				},
+	try {
+		// Find roles all
+		const roles = await Role.findAll({
+			where: {
+				name: { [Op.ne]: 'sadmin' },
 			},
-		],
-	});
+			attributes: ['id', 'name'],
+		});
+		// Find roles by user
+		const roleUser = await User.findByPk(id, {
+			attributes: [],
+			include: [
+				{
+					association: 'roles',
+					where: {
+						name: { [Op.ne]: 'sadmin' },
+					},
+					attributes: ['id'],
+					through: {
+						attributes: [],
+					},
+				},
+			],
+		});
 
-	// Map role option return array [{label:'admin',value:1,disable:true}, ...]
-	const roleAll = await mapRoleOptions(roles);
+		// Map role option return array [{label:'admin',value:1,disable:true}, ...]
+		const roleAll = await mapRoleOptions(roles);
 
-	// return array [1,2,3,...]
-	const roleByUser = await roleUser.roles.map(role => role.id);
+		// return array [1,2,3,...]
+		const roleByUser = await roleUser.roles.map(role => role.id);
 
-	// Response
-	return {
-		roleAll,
-		roleByUser,
-	};
+		// Response
+		return {
+			roleAll,
+			roleByUser,
+		};
+	} catch (e) {
+		throw e;
+	}
 };
 
 /**
@@ -76,20 +84,24 @@ const getAllRoles = async id => {
  * @returns
  */
 const updateUserStatus = async (id, { status }) => {
-	// Buscar usuario
-	const user = await User.findByPk(id);
-	if (!user) {
-		throw {
-			status: 404,
-			message: 'USER_NOT_FOUND',
-		};
+	try {
+		// Buscar usuario
+		const user = await User.findByPk(id);
+		if (!user) {
+			throw {
+				status: 404,
+				message: 'USER_NOT_FOUND',
+			};
+		}
+
+		// Update status
+		await user.update({ status });
+
+		// Enviar respuesta
+		return `Status ${status}`;
+	} catch (e) {
+		throw e;
 	}
-
-	// Update status
-	await user.update({ status });
-
-	// Enviar respuesta
-	return `Status ${status}`;
 };
 
 /**
@@ -101,20 +113,24 @@ const updateUserStatus = async (id, { status }) => {
  */
 
 const updateUserRole = async (id, { roles }) => {
-	// Buscar usuario
-	const user = await User.findByPk(id);
-	if (!user) {
-		throw {
-			status: 404,
-			message: 'USER_NOT_FOUND',
-		};
+	try {
+		// Buscar usuario
+		const user = await User.findByPk(id);
+		if (!user) {
+			throw {
+				status: 404,
+				message: 'USER_NOT_FOUND',
+			};
+		}
+
+		// Update role
+		await user.setRoles(roles);
+
+		// Enviar respuesta
+		return 'Role updated';
+	} catch (e) {
+		throw e;
 	}
-
-	// Update role
-	await user.setRoles(roles);
-
-	// Enviar respuesta
-	return 'Role updated';
 };
 
 /**
@@ -125,34 +141,38 @@ const updateUserRole = async (id, { roles }) => {
  * @returns
  */
 const deleteUser = async (id, { email }) => {
-	// Buscar usuario
-	const user = await User.findByPk(id, {
-		include: [
-			{
-				association: 'profile',
-				attributes: { exclude: ['createdAt', 'updatedAt'] },
-			},
-		],
-	});
+	try {
+		// Buscar usuario
+		const user = await User.findByPk(id, {
+			include: [
+				{
+					association: 'profile',
+					attributes: { exclude: ['createdAt', 'updatedAt'] },
+				},
+			],
+		});
 
-	if (!user || user.email != email) {
-		throw {
-			status: 404,
-			message: 'USER_NOT_FOUND',
-		};
+		if (!user || user.email != email) {
+			throw {
+				status: 404,
+				message: 'USER_NOT_FOUND',
+			};
+		}
+
+		// Borrar avatar
+		const { profile } = user;
+		if (!(profile.avatar === 'avatar_default.png' || profile.avatar === null)) {
+			await deleteFile(profile.avatar);
+		}
+
+		// Borrar usuario
+		user.destroy();
+
+		// Enviar respuesta
+		return `User ${email} deleted`;
+	} catch (e) {
+		throw e;
 	}
-
-	// Borrar avatar
-	const { profile } = user;
-	if (!(profile.avatar === 'avatar_default.png' || profile.avatar === null)) {
-		await deleteFile(profile.avatar);
-	}
-
-	// Borrar usuario
-	user.destroy();
-
-	// Enviar respuesta
-	return `User ${email} deleted`;
 };
 
 module.exports = {
