@@ -3,32 +3,26 @@ import { Router } from 'express';
 import controllerAuth from '../../controllers/controller.auth.js';
 // Middleware
 import validationAuth from '../../validations/validation.auth.js';
-// import createRateLimiter from '../../middleware/createRateLimiter.js';
-
-// Apply rate limiting for specific routes
-// const rateLimiter = createRateLimiter({
-// 	windowMs: 5 * 60 * 1000, // 5 minute
-// 	max: 6, // 3 requests per minute
-// });
 
 const router = Router();
 
 router.post('/signup', validationAuth.signup, controllerAuth.signup);
+router.post('/signin', validationAuth.signin, controllerAuth.signin);
+router.post('/signinTwo', validationAuth.email, controllerAuth.signinTwo);
 router.post(
-	'/signin',
-	//rateLimiter,
-	validationAuth.signin,
-	controllerAuth.signin,
-);
-router.post(
-	'/confirm/account',
-	validationAuth.confirmAccount,
-	controllerAuth.confirmAccount,
+	'/signinTwoCheck',
+	validationAuth.token,
+	controllerAuth.signinTwoCheck,
 );
 router.post(
 	'/forgot/password',
-	validationAuth.forgotPassword,
+	validationAuth.email,
 	controllerAuth.forgotPassword,
+);
+router.post(
+	'/confirm/account',
+	validationAuth.token,
+	controllerAuth.confirmAccount,
 );
 router.post(
 	'/reset/password',

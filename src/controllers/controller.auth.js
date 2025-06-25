@@ -62,6 +62,56 @@ const signin = async (req, res, next) => {
 		return next(createError(e?.status || 500, e?.message || 'ERROR'));
 	}
 };
+/**
+ * Signin Two
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ * @returns
+ */
+const signinTwo = async (req, res, next) => {
+	// Data
+	const { email } = matchedData(req);
+	try {
+		const response = await serviceAuth.signinTwo(email);
+		res.status(200).json({
+			status: 'OK',
+			data: [],
+			message: response,
+		});
+	} catch (e) {
+		return next(createError(e?.status || 500, e?.message || 'ERROR'));
+	}
+};
+
+/**
+ * Signin Two Check
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ * @returns
+ */
+
+const signinTwoCheck = async (req, res, next) => {
+	// Data
+	const { token } = matchedData(req);
+
+	try {
+		const { user, key } = await serviceAuth.signinTwoCheck(token);
+		res.status(200).json({
+			status: 'OK',
+			data: {
+				user,
+				key,
+			},
+			message: 'You are successfully logged in.',
+		});
+	} catch (e) {
+		return next(createError(e?.status || 500, e?.message || 'ERROR'));
+	}
+};
 
 /**
  * Confirm email
@@ -140,6 +190,8 @@ const resetPassword = async (req, res, next) => {
 module.exports = {
 	signup,
 	signin,
+	signinTwo,
+	signinTwoCheck,
 	confirmAccount,
 	forgotPassword,
 	resetPassword,

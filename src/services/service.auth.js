@@ -53,7 +53,7 @@ const signup = async (fullName, email, password) => {
 
 		// Enviar email
 		await mail({
-			from: 'Request to confirm your email address 🙋‍♂️',
+			from: process.env.NAME_PROJECT,
 			to: email,
 			subject: 'Request to confirm your email address 📩',
 			name,
@@ -155,6 +155,128 @@ const signin = async (email, password) => {
 		throw e;
 	}
 };
+
+/**
+ * Signin Two
+ *
+ * @param {*} email
+ * @returns
+ */
+const signinTwo = async email => {
+	try {
+		// Consultar el usuario por el email
+		const user = await User.findOne({
+			where: { email },
+			attributes: ['id', 'name', 'status', 'email_verified_at'],
+		});
+
+		// Si user no existe
+		if (!user) {
+			throw {
+				status: 404,
+				message: 'USER_NOT_FOUND',
+			};
+		}
+
+		// Verifica si la cuenta esta activa
+		if (!(user.status === 'active')) {
+			throw {
+				status: 400,
+				message: 'INACTIVE_ACCOUNT',
+			};
+		}
+
+		// Verifica si el email esta verificado
+		if (user.email_verified_at === null || user.email_verified_at === '') {
+			throw {
+				status: 400,
+				message: 'EMAIL_NOT_VERIFIED',
+			};
+		}
+
+		// Generamos el token firmado con el id del usuario
+		const token = await signToken(
+			{ user: user.id },
+			process.env.SECRET_SESSION_TWO,
+			process.env.SECRET_SESSION_TWO_EXPIRE,
+		);
+
+		// Generate link
+		const link = `${process.env.DOMAIN_PRODUCTION}/signin/two/check?token=${token}`;
+
+		// Send email
+		await mail({
+			from: process.env.NAME_PROJECT,
+			to: email,
+			subject: 'Solicitud para iniciar sesión 📩',
+			name: user.name,
+			link,
+			template: 'login_by_email.ejs',
+		});
+
+		// return data
+		return 'We have sent you a verification token';
+	} catch (e) {
+		throw e;
+	}
+};
+
+/**
+ * Signin Two Check
+ *
+ * @param {*} token
+ * @returns
+ */
+const signinTwoCheck = async token => {
+	try {
+		//Verify token
+		const dataToken = await verifyToken(token, process.env.SECRET_SESSION_TWO);
+		if (!dataToken) {
+			throw {
+				status: 401,
+				message: 'UNAUTHORIZED',
+			};
+		}
+		// Buscar un usuario
+		const user = await User.findByPk(dataToken.user, {
+			attributes: ['id', 'name', 'email'],
+			include: [
+				{
+					association: 'roles',
+					attributes: ['name'],
+					through: {
+						attributes: [],
+					},
+				},
+			],
+		});
+		if (!user) {
+			throw {
+				status: 404,
+				message: 'USER_NOT_FOUND',
+			};
+		}
+
+		// mapRole return un array ['user','admin','...']
+		const roles = await mapRole(user.roles);
+
+		// Generamos el token firmado con el id del usuario y los roles
+		const key = await signToken(
+			{ user: user.id, roles: roles },
+			process.env.SECRET_SESSION,
+			process.env.SESSION_EXPIRE,
+		);
+
+		// return data
+		return {
+			user,
+			key,
+		};
+	} catch (e) {
+		throw e;
+	}
+};
+
 /**
  * Confirm account
  *
@@ -241,7 +363,7 @@ const forgotPassword = async email => {
 
 		// Envia un email
 		await mail({
-			from: 'Request to reset password 🙋‍♂️',
+			from: process.env.NAME_PROJECT,
 			to: email,
 			subject: 'Request to reset password 📩',
 			name: user.name,
@@ -298,6 +420,8 @@ const resetPassword = async (token, password) => {
 module.exports = {
 	signup,
 	signin,
+	signinTwo,
+	signinTwoCheck,
 	confirmAccount,
 	forgotPassword,
 	resetPassword,

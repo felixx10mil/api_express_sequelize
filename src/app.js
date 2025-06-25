@@ -6,6 +6,11 @@ import cookieParser from 'cookie-parser';
 import path from 'path';
 import cors from 'cors';
 import { handleHttpError, handleError404 } from './middleware/handleError.js';
+// import {
+// 	authLimiter,
+// 	adminLimiter,
+// 	userLimiter,
+// } from './utils/rateLimiters.js';
 
 // Routes
 import routeHome from './routes/v1/route.home.js';
@@ -31,9 +36,9 @@ app.use(
 // Helmet
 app.use(helmet());
 
-//  Middleware
+// Middleware
 app.use(morgan(process.env.MORGAN));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'storage')));

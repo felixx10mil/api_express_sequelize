@@ -57,34 +57,6 @@ const signin = [
 
 	(req, res, next) => validateResults(req, res, next),
 ];
-const confirmAccount = [
-	check('token')
-		.exists()
-		.withMessage('The token field is required.')
-		.notEmpty()
-		.withMessage('The token field cannot be empty.')
-		.isJWT()
-		.withMessage('The token is invalid.'),
-	(req, res, next) => validateResults(req, res, next),
-];
-const forgotPassword = [
-	check('email')
-		.exists()
-		.withMessage('The email field is required.')
-		.notEmpty()
-		.withMessage('The email field cannot be empty.')
-		.isEmail()
-		.withMessage('The email is invalid.')
-		.custom(async value => {
-			// TODO:es posible que esta capa pueda acceder a la DB
-			const searchEmail = await User.findOne({ where: { email: value } });
-			if (!searchEmail) {
-				throw new Error('Email already registered.');
-			}
-		}),
-
-	(req, res, next) => validateResults(req, res, next),
-];
 const resetPassword = [
 	check('token')
 		.exists()
@@ -110,11 +82,39 @@ const resetPassword = [
 
 	(req, res, next) => validateResults(req, res, next),
 ];
+const email = [
+	check('email')
+		.exists()
+		.withMessage('The email field is required.')
+		.notEmpty()
+		.withMessage('The email field cannot be empty.')
+		.isEmail()
+		.withMessage('The email is invalid.')
+		.custom(async value => {
+			// TODO:es posible que esta capa pueda acceder a la DB
+			const searchEmail = await User.findOne({ where: { email: value } });
+			if (!searchEmail) {
+				throw new Error('Email already registered.');
+			}
+		}),
+
+	(req, res, next) => validateResults(req, res, next),
+];
+const token = [
+	check('token')
+		.exists()
+		.withMessage('The token field is required.')
+		.notEmpty()
+		.withMessage('The token field cannot be empty.')
+		.isJWT()
+		.withMessage('The token is invalid.'),
+	(req, res, next) => validateResults(req, res, next),
+];
 
 module.exports = {
 	signin,
 	signup,
-	confirmAccount,
-	forgotPassword,
 	resetPassword,
+	email,
+	token,
 };
