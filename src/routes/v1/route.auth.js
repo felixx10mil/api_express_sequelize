@@ -8,11 +8,15 @@ const router = Router();
 
 router.post('/signup', validationAuth.signup, controllerAuth.signup);
 router.post('/signin', validationAuth.signin, controllerAuth.signin);
-router.post('/signinTwo', validationAuth.email, controllerAuth.signinTwo);
 router.post(
-	'/signinTwoCheck',
+	'/send/authEmail',
+	validationAuth.email,
+	controllerAuth.sendAuthEmail,
+);
+router.post(
+	'/verify/authEmail',
 	validationAuth.token,
-	controllerAuth.signinTwoCheck,
+	controllerAuth.verifyAuthEmail,
 );
 router.post(
 	'/forgot/password',

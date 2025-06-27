@@ -49,7 +49,7 @@ const signup = async (fullName, email, password) => {
 		);
 
 		// Link
-		const link = `${process.env.DOMAIN_PRODUCTION}/confirm/account?token=${token}`;
+		const link = `${process.env.DOMAIN_PRODUCTION}/confirm/account/${token}`;
 
 		// Enviar email
 		await mail({
@@ -162,7 +162,7 @@ const signin = async (email, password) => {
  * @param {*} email
  * @returns
  */
-const signinTwo = async email => {
+const sendAuthEmail = async email => {
 	try {
 		// Consultar el usuario por el email
 		const user = await User.findOne({
@@ -202,8 +202,7 @@ const signinTwo = async email => {
 		);
 
 		// Generate link
-		const link = `${process.env.DOMAIN_PRODUCTION}/signin/two/check?token=${token}`;
-
+		const link = `${process.env.DOMAIN_PRODUCTION}/verify/auth/email/${token}`;
 		// Send email
 		await mail({
 			from: process.env.NAME_PROJECT,
@@ -227,7 +226,7 @@ const signinTwo = async email => {
  * @param {*} token
  * @returns
  */
-const signinTwoCheck = async token => {
+const verifyAuthEmail = async token => {
 	try {
 		//Verify token
 		const dataToken = await verifyToken(token, process.env.SECRET_SESSION_TWO);
@@ -359,7 +358,7 @@ const forgotPassword = async email => {
 			process.env.RESET_PASSWORD_EXPIRE,
 		);
 		// Generate link
-		const link = `${process.env.DOMAIN_PRODUCTION}/reset/password?token=${token}`;
+		const link = `${process.env.DOMAIN_PRODUCTION}/reset/password/${token}`;
 
 		// Envia un email
 		await mail({
@@ -420,8 +419,8 @@ const resetPassword = async (token, password) => {
 module.exports = {
 	signup,
 	signin,
-	signinTwo,
-	signinTwoCheck,
+	sendAuthEmail,
+	verifyAuthEmail,
 	confirmAccount,
 	forgotPassword,
 	resetPassword,

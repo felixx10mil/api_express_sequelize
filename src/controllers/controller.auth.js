@@ -70,11 +70,11 @@ const signin = async (req, res, next) => {
  * @param {*} next
  * @returns
  */
-const signinTwo = async (req, res, next) => {
+const sendAuthEmail = async (req, res, next) => {
 	// Data
 	const { email } = matchedData(req);
 	try {
-		const response = await serviceAuth.signinTwo(email);
+		const response = await serviceAuth.sendAuthEmail(email);
 		res.status(200).json({
 			status: 'OK',
 			data: [],
@@ -94,12 +94,12 @@ const signinTwo = async (req, res, next) => {
  * @returns
  */
 
-const signinTwoCheck = async (req, res, next) => {
+const verifyAuthEmail = async (req, res, next) => {
 	// Data
 	const { token } = matchedData(req);
 
 	try {
-		const { user, key } = await serviceAuth.signinTwoCheck(token);
+		const { user, key } = await serviceAuth.verifyAuthEmail(token);
 		res.status(200).json({
 			status: 'OK',
 			data: {
@@ -190,8 +190,8 @@ const resetPassword = async (req, res, next) => {
 module.exports = {
 	signup,
 	signin,
-	signinTwo,
-	signinTwoCheck,
+	sendAuthEmail,
+	verifyAuthEmail,
 	confirmAccount,
 	forgotPassword,
 	resetPassword,
