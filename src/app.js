@@ -2,7 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import cookieParser from 'cookie-parser';
+// import cookieParser from 'cookie-parser';
 import path from 'path';
 import cors from 'cors';
 import { handleHttpError, handleError404 } from './middleware/handleError.js';
@@ -40,7 +40,7 @@ app.use(helmet());
 app.use(morgan(process.env.MORGAN));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cookieParser());
+// app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'storage')));
 
 //  Routes

@@ -13,7 +13,7 @@ const getAllUsers = async () => {
 		// Find users
 		const users = await User.findAll({
 			attributes: {
-				exclude: ['password', 'status', 'email_verified_at'],
+				exclude: ['password'],
 			},
 			include: [
 				{
