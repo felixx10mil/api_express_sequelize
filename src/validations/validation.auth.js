@@ -1,5 +1,4 @@
 import { check } from 'express-validator';
-import { User } from '../models/index.js';
 import validateResults from './validateResult.js';
 
 const signup = [
@@ -16,14 +15,7 @@ const signup = [
 		.notEmpty()
 		.withMessage('The email field cannot be empty.')
 		.isEmail()
-		.withMessage('The email is invalid.')
-		.custom(async value => {
-			// TODO:es posible que esta capa pueda acceder a la DB 👇👇
-			const user = await User.findOne({ where: { email: value } });
-			if (user) {
-				throw new Error('Email already registered.');
-			}
-		}),
+		.withMessage('The email is invalid.'),
 	check('password')
 		.exists()
 		.withMessage('The password field is required.')
@@ -89,15 +81,7 @@ const email = [
 		.notEmpty()
 		.withMessage('The email field cannot be empty.')
 		.isEmail()
-		.withMessage('The email is invalid.')
-		.custom(async value => {
-			// TODO:es posible que esta capa pueda acceder a la DB
-			const searchEmail = await User.findOne({ where: { email: value } });
-			if (!searchEmail) {
-				throw new Error('Email already registered.');
-			}
-		}),
-
+		.withMessage('The email is invalid.'),
 	(req, res, next) => validateResults(req, res, next),
 ];
 const token = [

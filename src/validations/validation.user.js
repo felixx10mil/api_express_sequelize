@@ -1,6 +1,4 @@
 import { check, param } from 'express-validator';
-import { User } from '../models/index.js';
-import { Op } from 'sequelize';
 import validateResults from './validateResult.js';
 
 const paramsId = [
@@ -29,18 +27,7 @@ const updateAccount = [
 		.exists()
 		.withMessage('Email is required.')
 		.notEmpty()
-		.withMessage('The email field cannot be empty.')
-		.custom(async (value, { req }) => {
-			const response = await User.count({
-				where: {
-					email: value,
-					id: { [Op.ne]: req.user },
-				},
-			});
-			if (response) {
-				throw new Error('Email already registered.');
-			}
-		}),
+		.withMessage('The email field cannot be empty.'),
 
 	(req, res, next) => validateResults(req, res, next),
 ];

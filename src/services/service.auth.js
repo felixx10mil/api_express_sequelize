@@ -18,6 +18,16 @@ const signup = async (fullName, email, password) => {
 	const [first_name, last_name] = fullName.split(' ');
 
 	try {
+		// Verify the existence of the e-mail address
+		// Avoid a duplication error.
+		const checkEmail = await User.findOne({ where: { email } });
+		if (checkEmail) {
+			throw {
+				status: 409,
+				message: 'INVALID_EMAIL',
+			};
+		}
+
 		// Registra el usuario
 		const user = await User.create(
 			{
@@ -61,7 +71,7 @@ const signup = async (fullName, email, password) => {
 			template: 'email_confirm.ejs',
 		});
 
-		return 'You have successfully registered, please check your email address.';
+		return 'You have successfully registered, we send a link to check your email address.';
 	} catch (e) {
 		throw e;
 	}

@@ -1,3 +1,4 @@
+import { Op } from 'sequelize';
 import { User, Profile } from '../models/index.js';
 import { comparePass } from '../utils/handleBcrypt.js';
 import deleteFile from '../utils/deleteFile.js';
@@ -44,6 +45,21 @@ const getUserById = async id => {
  */
 const accountUpdate = async (id, body) => {
 	try {
+		// Verify the existence of the e-mail address
+		// Avoid a duplication error.
+		const checkEmail = await User.count({
+			where: {
+				email: body.email,
+				id: { [Op.ne]: id },
+			},
+		});
+		if (checkEmail) {
+			throw {
+				status: 400,
+				message: 'INVALID_EMAIL',
+			};
+		}
+
 		//Find user
 		const user = await User.findByPk(id);
 		if (!user) {
@@ -162,7 +178,6 @@ const photoUpdate = async (id, file) => {
 		}
 
 		// Resize image
-		// TODO:check
 		const resizedImage = await resizeImage(file, 128, 128); // name file,width:,height,
 		if (!resizeImage) {
 			throw {
@@ -170,7 +185,6 @@ const photoUpdate = async (id, file) => {
 				message: 'ERROR_RESIZE_IMAGE',
 			};
 		}
-		//TODO:end check
 
 		// Delete previous image
 		if (profile.avatar != 'avatar_default.png') {
