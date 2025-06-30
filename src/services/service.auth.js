@@ -13,10 +13,8 @@ import mapRole from '../utils/mapRoleAuth.js';
  * @returns
  */
 
-const signup = async (fullName, email, password) => {
+const signup = async (firstName, lastName, email, password) => {
 	const name = email.split('@')[0];
-	const [first_name, last_name] = fullName.split(' ');
-
 	try {
 		// Verify the existence of the e-mail address
 		// Avoid a duplication error.
@@ -37,8 +35,8 @@ const signup = async (fullName, email, password) => {
 				password,
 				status: 'inactive',
 				profile: {
-					first_name,
-					last_name,
+					first_name: firstName,
+					last_name: lastName,
 					biography: 'write your biography',
 					avatar: 'avatar_default.png',
 				},

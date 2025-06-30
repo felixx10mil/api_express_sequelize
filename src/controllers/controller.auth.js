@@ -12,10 +12,15 @@ import serviceAuth from '../services/service.auth.js';
  */
 const signup = async (req, res, next) => {
 	// Data
-	const { fullName, email, password } = matchedData(req);
+	const { firstName, lastName, email, password } = matchedData(req);
 
 	try {
-		const response = await serviceAuth.signup(fullName, email, password);
+		const response = await serviceAuth.signup(
+			firstName,
+			lastName,
+			email,
+			password,
+		);
 		res.status(201).json({
 			status: 'OK',
 			data: [],
