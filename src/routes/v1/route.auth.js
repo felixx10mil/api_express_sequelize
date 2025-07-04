@@ -7,7 +7,7 @@ import validationAuth from '../../validations/validation.auth.js';
 const router = Router();
 
 router.post('/signup', validationAuth.signup, controllerAuth.signup);
-router.post('/signin', validationAuth.signin, controllerAuth.signin);
+router.post('/login', validationAuth.login, controllerAuth.login);
 router.post(
 	'/send/authEmail',
 	validationAuth.email,

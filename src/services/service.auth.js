@@ -81,7 +81,7 @@ const signup = async (firstName, lastName, email, password) => {
  * @param {*} password
  * @returns
  */
-const signin = async (email, password) => {
+const login = async (email, password) => {
 	try {
 		// Consultar el usuario por el email
 		const user = await User.findOne({
@@ -165,7 +165,7 @@ const signin = async (email, password) => {
 };
 
 /**
- * Signin Two
+ * Send auth email
  *
  * @param {*} email
  * @returns
@@ -229,7 +229,7 @@ const sendAuthEmail = async email => {
 };
 
 /**
- * Signin Two Check
+ * Verify auth email
  *
  * @param {*} token
  * @returns
@@ -426,7 +426,7 @@ const resetPassword = async (token, password) => {
 
 module.exports = {
 	signup,
-	signin,
+	login,
 	sendAuthEmail,
 	verifyAuthEmail,
 	confirmAccount,

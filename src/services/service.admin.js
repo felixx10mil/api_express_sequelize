@@ -8,7 +8,7 @@ import mapRoleOptions from '../utils/mapRoleOptions.js';
  *
  * @returns
  */
-const getAllUsers = async () => {
+const getUsers = async () => {
 	try {
 		// Find users
 		const users = await User.findAll({
@@ -29,22 +29,43 @@ const getAllUsers = async () => {
 		throw e;
 	}
 };
+
 /**
  * Return roles
  *
  * @returns
  */
-const getAllRoles = async id => {
+const getRoles = async () => {
 	try {
-		// Find roles all
-		const roles = await Role.findAll({
+		// Find roles
+		const data = await Role.findAll({
 			where: {
 				name: { [Op.ne]: 'sadmin' },
 			},
 			attributes: ['id', 'name'],
 		});
+
+		// Map role option return array [{label:'admin',value:1,disable:true}, ...]
+		const roles = await mapRoleOptions(data);
+
+		// Response
+		return {
+			roles,
+		};
+	} catch (e) {
+		throw e;
+	}
+};
+
+/**
+ * Return roles by user
+ *
+ * @returns
+ */
+const getRolesByUser = async id => {
+	try {
 		// Find roles by user
-		const roleUser = await User.findByPk(id, {
+		const data = await User.findByPk(id, {
 			attributes: [],
 			include: [
 				{
@@ -60,16 +81,12 @@ const getAllRoles = async id => {
 			],
 		});
 
-		// Map role option return array [{label:'admin',value:1,disable:true}, ...]
-		const roleAll = await mapRoleOptions(roles);
-
 		// return array [1,2,3,...]
-		const roleByUser = await roleUser.roles.map(role => role.id);
+		const roles = await data.roles.map(role => role.id);
 
 		// Response
 		return {
-			roleAll,
-			roleByUser,
+			roles,
 		};
 	} catch (e) {
 		throw e;
@@ -105,7 +122,7 @@ const updateUserStatus = async (id, { status }) => {
 };
 
 /**
- * Update status
+ * Update roles by user
  *
  * @param {*} id
  * @param {*} roles
@@ -176,8 +193,9 @@ const deleteUser = async (id, { email }) => {
 };
 
 module.exports = {
-	getAllUsers,
-	getAllRoles,
+	getUsers,
+	getRoles,
+	getRolesByUser,
 	updateUserStatus,
 	updateUserRole,
 	deleteUser,

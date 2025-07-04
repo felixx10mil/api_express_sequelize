@@ -10,7 +10,7 @@ import logger from '../utils/handleLogger.js';
  */
 const handleHttpError = (err, req, res, next) => {
 	const status = err.status || 500;
-	logger.error(err.message);
+	logger.error(status + '-' + err.message);
 	res.status(status).json({
 		status: status,
 		message: 'Something went wrong!',

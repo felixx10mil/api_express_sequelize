@@ -8,7 +8,7 @@ module.exports = {
 			[
 				{
 					id: 1,
-					name: 'sadmin',
+					name: 'user',
 					createdAt: new Date(),
 					updatedAt: new Date(),
 				},
@@ -20,7 +20,7 @@ module.exports = {
 				},
 				{
 					id: 3,
-					name: 'user',
+					name: 'sadmin',
 					createdAt: new Date(),
 					updatedAt: new Date(),
 				},

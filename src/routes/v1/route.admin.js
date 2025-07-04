@@ -12,17 +12,23 @@ router.get(
 	'/users',
 	checkTokenHeader,
 	checkRole(['sadmin']),
-	controllerAdmin.getAllUsers,
+	controllerAdmin.getUsers,
 );
 router.get(
-	'/users/roles/:id',
+	'/roles',
+	checkTokenHeader,
+	checkRole(['sadmin']),
+	controllerAdmin.getRoles,
+);
+router.get(
+	'/roles/by/user/:id',
 	validationAdmin.paramsId,
 	checkTokenHeader,
 	checkRole(['sadmin']),
-	controllerAdmin.getAllRoles,
+	controllerAdmin.getRolesByUser,
 );
 router.patch(
-	'/users/status/:id',
+	'/status/user/:id',
 	validationAdmin.paramsId,
 	validationAdmin.updateStatus,
 	checkTokenHeader,
@@ -30,7 +36,7 @@ router.patch(
 	controllerAdmin.updateUserStatus,
 );
 router.put(
-	'/users/roles/:id',
+	'/roles/user/:id',
 	validationAdmin.paramsId,
 	validationAdmin.updateRole,
 	checkTokenHeader,
@@ -38,7 +44,7 @@ router.put(
 	controllerAdmin.updateUserRole,
 );
 router.delete(
-	'/users/:id',
+	'/user/:id',
 	validationAdmin.paramsId,
 	validationAdmin.deleteAccount,
 	checkTokenHeader,

@@ -3,7 +3,7 @@ import { matchedData } from 'express-validator';
 import serviceAdmin from '../services/service.admin.js';
 
 /**
- * Get all users
+ * Get users
  *
  * @param {*} req
  * @param {*} res
@@ -11,9 +11,9 @@ import serviceAdmin from '../services/service.admin.js';
  * @returns
  */
 
-export const getAllUsers = async (req, res, next) => {
+export const getUsers = async (req, res, next) => {
 	try {
-		const users = await serviceAdmin.getAllUsers();
+		const users = await serviceAdmin.getUsers();
 		res.status(200).json({
 			status: 'OK',
 			users: users,
@@ -24,17 +24,37 @@ export const getAllUsers = async (req, res, next) => {
 };
 
 /**
- * Get all users
+ * Get roles
  *
  * @param {*} req
  * @param {*} res
  * @param {*} next
  * @returns
  */
-const getAllRoles = async (req, res, next) => {
+const getRoles = async (req, res, next) => {
+	try {
+		const roles = await serviceAdmin.getRoles();
+		res.status(200).json({
+			status: 'OK',
+			roles: roles,
+		});
+	} catch (e) {
+		return next(createError(e?.status || 500, e?.message || 'ERROR'));
+	}
+};
+
+/**
+ * Get roles by user
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ * @returns
+ */
+const getRolesByUser = async (req, res, next) => {
 	const { id } = matchedData(req);
 	try {
-		const roles = await serviceAdmin.getAllRoles(parseInt(id));
+		const roles = await serviceAdmin.getRolesByUser(parseInt(id));
 		res.status(200).json({
 			status: 'OK',
 			roles: roles,
@@ -114,8 +134,9 @@ const deleteUser = async (req, res, next) => {
 };
 
 module.exports = {
-	getAllUsers,
-	getAllRoles,
+	getUsers,
+	getRoles,
+	getRolesByUser,
 	updateUserStatus,
 	updateUserRole,
 	deleteUser,

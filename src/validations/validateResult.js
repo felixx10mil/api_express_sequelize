@@ -15,7 +15,7 @@ const validateResults = (req, res, next) => {
 	} catch (err) {
 		throw {
 			status: 400,
-			message: 'The request is not valid',
+			message: 'THE_REQUEST_IS_NOT_VALID',
 		};
 	}
 };

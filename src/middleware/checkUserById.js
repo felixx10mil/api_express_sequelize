@@ -11,7 +11,7 @@ import createError from 'http-errors';
 const checkUserById = async (req, res, next) => {
 	try {
 		// Verifica que el usuario autenticado sea el mismo del parametro enviado
-		if (req.user !== Number.parseInt(req.params.id)) {
+		if (req.user !== parseInt(req.params.id)) {
 			return next(createError(403, 'UNAUTHORIZED_USER'));
 		}
 		next();

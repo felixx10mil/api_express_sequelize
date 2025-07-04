@@ -2,8 +2,8 @@ import { check } from 'express-validator';
 import validateResults from './validateResult.js';
 
 const signup = [
-	check('firstName').exists().notEmpty(),
-	check('lastName').exists().notEmpty(),
+	check('firstName').exists().notEmpty().isAlpha(),
+	check('lastName').exists().notEmpty().isAlpha(),
 	check('email').exists().notEmpty().isEmail(),
 	check('password')
 		.exists()
@@ -13,13 +13,11 @@ const signup = [
 		.exists()
 		.notEmpty()
 		.custom((value, { req }) => value === req.body.password),
-
 	(req, res, next) => validateResults(req, res, next),
 ];
-const signin = [
+const login = [
 	check('email').exists().notEmpty().isEmail(),
 	check('password').exists().notEmpty(),
-
 	(req, res, next) => validateResults(req, res, next),
 ];
 const resetPassword = [
@@ -32,7 +30,6 @@ const resetPassword = [
 		.exists()
 		.notEmpty()
 		.custom((value, { req }) => value === req.body.password),
-
 	(req, res, next) => validateResults(req, res, next),
 ];
 const email = [
@@ -45,8 +42,8 @@ const token = [
 ];
 
 module.exports = {
-	signin,
 	signup,
+	login,
 	resetPassword,
 	email,
 	token,

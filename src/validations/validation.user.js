@@ -3,14 +3,12 @@ import validateResults from './validateResult.js';
 
 const paramsId = [
 	param('id').exists().isNumeric(),
-
 	(req, res, next) => validateResults(req, res, next),
 ];
 const updateAccount = [
 	check('currentPassword').exists().notEmpty(),
 	check('name').exists().notEmpty().isLength({ min: 6 }),
 	check('email').exists().notEmpty(),
-
 	(req, res, next) => validateResults(req, res, next),
 ];
 const updatePassword = [
@@ -27,10 +25,9 @@ const updatePassword = [
 	(req, res, next) => validateResults(req, res, next),
 ];
 const updateProfile = [
-	check('first_name').exists().notEmpty(),
-	check('last_name').exists().notEmpty(),
+	check('first_name').exists().notEmpty().isAlpha(),
+	check('last_name').exists().notEmpty().isAlpha(),
 	check('biography').exists().notEmpty(),
-
 	(req, res, next) => validateResults(req, res, next),
 ];
 

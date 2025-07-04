@@ -32,18 +32,18 @@ const signup = async (req, res, next) => {
 };
 
 /**
- * Signin
+ * login
  *
  * @param {*} req
  * @param {*} res
  * @param {*} next
  * @returns
  */
-const signin = async (req, res, next) => {
+const login = async (req, res, next) => {
 	// Data
 	const { email, password } = matchedData(req);
 	try {
-		const { user, token } = await serviceAuth.signin(email, password);
+		const { user, token } = await serviceAuth.login(email, password);
 
 		// Genera una cookie
 		// const expiryDate = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
@@ -67,8 +67,9 @@ const signin = async (req, res, next) => {
 		return next(createError(e?.status || 500, e?.message || 'ERROR'));
 	}
 };
+
 /**
- * Signin Two
+ * Send auth email
  *
  * @param {*} req
  * @param {*} res
@@ -91,7 +92,7 @@ const sendAuthEmail = async (req, res, next) => {
 };
 
 /**
- * Signin Two Check
+ * Verify auth email
  *
  * @param {*} req
  * @param {*} res
@@ -194,7 +195,7 @@ const resetPassword = async (req, res, next) => {
 
 module.exports = {
 	signup,
-	signin,
+	login,
 	sendAuthEmail,
 	verifyAuthEmail,
 	confirmAccount,

@@ -12,7 +12,6 @@ module.exports = {
 					email: 'admin@example.com',
 					password: bCrypt.hashSync('1234567', 10),
 					status: 'inactive',
-					emailVerified: 'notverified',
 					createdAt: new Date(),
 					updatedAt: new Date(),
 				},

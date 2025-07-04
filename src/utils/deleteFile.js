@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 
 /**
- * Name file
+ * Delete file
  * @param {*} file
  * @returns
  */
