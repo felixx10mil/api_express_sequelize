@@ -8,6 +8,7 @@ const router = Router();
 
 router.post('/signup', validationAuth.signup, controllerAuth.signup);
 router.post('/login', validationAuth.login, controllerAuth.login);
+router.post('/verify/2fa', validationAuth.v2fa, controllerAuth.verify2fa);
 router.post(
 	'/send/authEmail',
 	validationAuth.email,

@@ -30,10 +30,15 @@ const updateProfile = [
 	check('biography').exists().notEmpty(),
 	(req, res, next) => validateResults(req, res, next),
 ];
+const active2Fa = [
+	check('is2fa').exists().notEmpty().isIn(['active', 'inactive']),
+	(req, res, next) => validateResults(req, res, next),
+];
 
 module.exports = {
 	paramsId,
 	updateAccount,
 	updatePassword,
 	updateProfile,
+	active2Fa,
 };

@@ -1,4 +1,5 @@
-import { comparePass } from '../utils/handleBcrypt.js';
+import randomstring from 'randomstring';
+import { comparePass, encryptPass } from '../utils/handleBcrypt.js';
 import { signToken, verifyToken } from '../utils/handleJwt.js';
 import { User } from '../models/index.js';
 import mail from '../config/mail.js';
@@ -34,6 +35,8 @@ const signup = async (firstName, lastName, email, password) => {
 				email_verified_at: null,
 				password,
 				status: 'inactive',
+				is2fa: 'inactive',
+				code2fa: null,
 				profile: {
 					first_name: firstName,
 					last_name: lastName,
@@ -75,7 +78,7 @@ const signup = async (firstName, lastName, email, password) => {
 	}
 };
 /**
- * Sing in
+ * Login
  *
  * @param {*} email
  * @param {*} password
@@ -92,6 +95,8 @@ const login = async (email, password) => {
 				'email',
 				'email_verified_at',
 				'status',
+				'is2fa',
+				'code2fa',
 				'password',
 			],
 			include: [
@@ -113,11 +118,11 @@ const login = async (email, password) => {
 			};
 		}
 
-		// Verifica si la cuenta esta activa
-		if (!(user.status === 'active')) {
+		// Verifica la contraseña
+		if (!(await comparePass(password, user.password))) {
 			throw {
 				status: 400,
-				message: 'INACTIVE_ACCOUNT',
+				message: 'INVALID_PASSWORD',
 			};
 		}
 
@@ -129,35 +134,146 @@ const login = async (email, password) => {
 			};
 		}
 
-		// Verifica la contraseña
-		if (!(await comparePass(password, user.password))) {
+		// Verifica si la cuenta esta activa
+		if (!(user.status === 'active')) {
 			throw {
 				status: 400,
-				message: 'INVALID_PASSWORD',
+				message: 'INACTIVE_ACCOUNT',
 			};
 		}
 
 		// mapRole return un array ['user','admin','...']
 		const roles = await mapRole(user.roles);
 
-		// Generamos el token firmado con el id del usuario y los roles
+		// Generamos el token con el id del usuario y los roles
 		const token = await signToken(
 			{ user: user.id, roles: roles },
 			process.env.SECRET_SESSION,
 			process.env.SESSION_EXPIRE,
 		);
 
-		// Set password and status to undefined
-		user.set({
-			password: undefined,
-			status: undefined,
-			email_verified_at: undefined,
+		// Verify is2FA is active
+		if (user.is2fa === 'active') {
+			// Generamos el token con el id del usuario
+			const token2fa = await signToken(
+				{ user: user.id },
+				process.env.SECRET_SESSION_TWO,
+				process.env.SECRET_SESSION_TWO_EXPIRE,
+			);
+
+			// Generate a six-digit number
+			const randomSting = randomstring.generate({
+				length: 6,
+				charset: ['numeric'],
+			});
+
+			// Encriptar code
+			const hash2fa = await encryptPass(randomSting);
+
+			// Update code2fa to user table
+			user.update({ code2fa: hash2fa });
+
+			// Enviar code2fa por email
+			await mail({
+				from: process.env.NAME_PROJECT,
+				to: user.email,
+				subject: 'Verify your identity to proceed with the login',
+				name: user.name,
+				code: randomSting,
+				template: 'two_factor_auth.ejs',
+			});
+
+			return {
+				user: {
+					is2fa: user.is2fa,
+				},
+				token: token2fa,
+				message: 'A code has been sent to your e-mail address.',
+			};
+		} else {
+			// return data
+			return {
+				user: {
+					id: user.id,
+					name: user.name,
+					email: user.email,
+					is2fa: user.is2fa,
+				},
+				token,
+				message: 'You are successfully logged in.',
+			};
+		}
+	} catch (e) {
+		throw e;
+	}
+};
+
+/**
+ * Verify Two Factor Auth
+ *
+ * @param {*} token
+ * @param {*} code
+ * @returns
+ */
+const verify2fa = async (token, code) => {
+	try {
+		//Verify token
+		const dataToken = await verifyToken(token, process.env.SECRET_SESSION_TWO);
+		if (!dataToken) {
+			throw {
+				status: 401,
+				message: 'UNAUTHORIZED',
+			};
+		}
+
+		// Buscar un usuario
+		const user = await User.findByPk(dataToken.user, {
+			attributes: ['id', 'name', 'email', 'code2fa'],
+			include: [
+				{
+					association: 'roles',
+					attributes: ['name'],
+					through: {
+						attributes: [],
+					},
+				},
+			],
 		});
+
+		// Verify user
+		if (!user) {
+			throw {
+				status: 404,
+				message: 'USER_NOT_FOUND',
+			};
+		}
+
+		// Verify code
+		if (!(await comparePass(code, user.code2fa))) {
+			throw {
+				status: 409,
+				message: 'ERROR_CODE_2FA',
+			};
+		}
+
+		// mapRole return un array ['user','admin','...']
+		const roles = await mapRole(user.roles);
+
+		// Generamos el token con el id del usuario y los roles
+		const key = await signToken(
+			{ user: user.id, roles: roles },
+			process.env.SECRET_SESSION,
+			process.env.SESSION_EXPIRE,
+		);
 
 		// return data
 		return {
-			user,
-			token,
+			user: {
+				id: user.id,
+				name: user.name,
+				email: user.email,
+			},
+			key,
 		};
 	} catch (e) {
 		throw e;
@@ -202,7 +318,7 @@ const sendAuthEmail = async email => {
 			};
 		}
 
-		// Generamos el token firmado con el id del usuario
+		// Generamos el token con el id del usuario
 		const token = await signToken(
 			{ user: user.id },
 			process.env.SECRET_SESSION_TWO,
@@ -267,7 +383,7 @@ const verifyAuthEmail = async token => {
 		// mapRole return un array ['user','admin','...']
 		const roles = await mapRole(user.roles);
 
-		// Generamos el token firmado con el id del usuario y los roles
+		// Generamos el token con el id del usuario y los roles
 		const key = await signToken(
 			{ user: user.id, roles: roles },
 			process.env.SECRET_SESSION,
@@ -276,7 +392,11 @@ const verifyAuthEmail = async token => {
 
 		// return data
 		return {
-			user,
+			user: {
+				id: user.id,
+				name: user.name,
+				email: user.email,
+			},
 			key,
 		};
 	} catch (e) {
@@ -427,6 +547,7 @@ const resetPassword = async (token, password) => {
 module.exports = {
 	signup,
 	login,
+	verify2fa,
 	sendAuthEmail,
 	verifyAuthEmail,
 	confirmAccount,

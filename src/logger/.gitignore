@@ -1,9 +1,0 @@
-# .gitignore to keep just .log files
-# Filter everything...
-*
-
-# ... except the .gitignore...
-!.gitignore
-
-# ... and all t files.
-!*.log

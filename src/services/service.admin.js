@@ -169,10 +169,19 @@ const deleteUser = async (id, { email }) => {
 			],
 		});
 
+		// Comprueba que el usuario exista y el email le pertenezca
 		if (!user || user.email != email) {
 			throw {
 				status: 404,
 				message: 'USER_NOT_FOUND',
+			};
+		}
+		// Comprueba que el usuario no tengan role de sadmin
+		const isAdmin = await user.hasRole(3);
+		if (isAdmin) {
+			throw {
+				status: 409,
+				message: 'CANNOT_BE_DELETED',
 			};
 		}
 

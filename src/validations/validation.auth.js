@@ -20,6 +20,11 @@ const login = [
 	check('password').exists().notEmpty(),
 	(req, res, next) => validateResults(req, res, next),
 ];
+const v2fa = [
+	check('token').exists().notEmpty().isJWT(),
+	check('code').exists().notEmpty(),
+	(req, res, next) => validateResults(req, res, next),
+];
 const resetPassword = [
 	check('token').exists().notEmpty().isJWT(),
 	check('password')
@@ -44,6 +49,7 @@ const token = [
 module.exports = {
 	signup,
 	login,
+	v2fa,
 	resetPassword,
 	email,
 	token,

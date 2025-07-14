@@ -43,7 +43,7 @@ const login = async (req, res, next) => {
 	// Data
 	const { email, password } = matchedData(req);
 	try {
-		const { user, token } = await serviceAuth.login(email, password);
+		const response = await serviceAuth.login(email, password);
 
 		// Genera una cookie
 		// const expiryDate = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
@@ -58,8 +58,34 @@ const login = async (req, res, next) => {
 		res.status(200).json({
 			status: 'OK',
 			data: {
-				user,
-				token,
+				user: response.user,
+				token: response?.token,
+			},
+			message: response.message,
+		});
+	} catch (e) {
+		return next(createError(e?.status || 500, e?.message || 'ERROR'));
+	}
+};
+
+/**
+ * Verify TwoFactor Auth
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ * @returns
+ */
+const verify2fa = async (req, res, next) => {
+	// Data
+	const { token, code } = matchedData(req);
+	try {
+		const response = await serviceAuth.verify2fa(token, code);
+		res.status(200).json({
+			status: 'OK',
+			data: {
+				user: response.user,
+				token: response?.key,
 			},
 			message: 'You are successfully logged in.',
 		});
@@ -105,12 +131,12 @@ const verifyAuthEmail = async (req, res, next) => {
 	const { token } = matchedData(req);
 
 	try {
-		const { user, key } = await serviceAuth.verifyAuthEmail(token);
+		const response = await serviceAuth.verifyAuthEmail(token);
 		res.status(200).json({
 			status: 'OK',
 			data: {
-				user,
-				key,
+				user: response.user,
+				token: response.key,
 			},
 			message: 'You are successfully logged in.',
 		});
@@ -196,6 +222,7 @@ const resetPassword = async (req, res, next) => {
 module.exports = {
 	signup,
 	login,
+	verify2fa,
 	sendAuthEmail,
 	verifyAuthEmail,
 	confirmAccount,

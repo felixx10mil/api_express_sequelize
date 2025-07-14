@@ -47,5 +47,13 @@ router.patch(
 	upload.single('file'),
 	controllerUser.photoUpdate,
 );
+router.patch(
+	'/active/is2fa/:id',
+	validationUser.paramsId,
+	validationUser.active2Fa,
+	checkTokenHeader,
+	checkUserById,
+	controllerUser.active2Fa,
+);
 
 module.exports = router;

@@ -32,6 +32,16 @@ module.exports = (sequelize, DataTypes) => {
 				values: ['active', 'inactive'],
 				defaultValue: 'inactive',
 			},
+			is2fa: {
+				allowNull: false,
+				type: DataTypes.ENUM,
+				values: ['active', 'inactive'],
+				defaultValue: 'inactive',
+			},
+			code2fa: {
+				allowNull: true,
+				type: DataTypes.STRING,
+			},
 		},
 		{
 			sequelize,

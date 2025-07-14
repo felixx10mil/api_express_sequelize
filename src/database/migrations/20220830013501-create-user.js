@@ -27,6 +27,15 @@ module.exports = {
 				values: ['active', 'inactive'],
 				defaultValue: 'inactive',
 			},
+			is2fa: {
+				type: Sequelize.ENUM,
+				values: ['active', 'inactive'],
+				defaultValue: 'inactive',
+			},
+			code2fa: {
+				allowNull: true,
+				type: Sequelize.STRING,
+			},
 			createdAt: {
 				allowNull: false,
 				type: Sequelize.DATE,

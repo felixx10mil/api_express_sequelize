@@ -684,3 +684,531 @@
 2025-07-04T12:35:14.553Z [32minfo[39m: [32mServer is running on port 3000.[39m
 2025-07-04T13:47:06.048Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
 2025-07-04T13:47:06.053Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-07T13:48:34.107Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-07T13:48:34.112Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-09T15:02:12.835Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-09T15:02:12.859Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-09T15:59:23.193Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-09T15:59:23.199Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-10T01:42:33.848Z [31merror[39m: [31mUnable to connect to the database 🤷🏼[39m
+2025-07-10T01:43:08.682Z [31merror[39m: [31mUnable to connect to the database 🤷🏼[39m
+2025-07-10T01:43:44.240Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-10T01:43:44.247Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-10T02:03:49.306Z [31merror[39m: [31m500-Cannot destructure property 'filename' of 'req.file' as it is undefined.[39m
+2025-07-10T02:48:43.508Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-10T02:48:43.514Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-10T02:51:29.542Z [31merror[39m: [31mPage not found![39m
+2025-07-10T02:52:23.649Z [31merror[39m: [31m500-sadmin is not defined[39m
+2025-07-10T02:53:27.168Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-10T02:53:27.173Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-10T02:53:31.691Z [31merror[39m: [31m500-sadmin is not defined[39m
+2025-07-10T02:55:42.517Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-10T02:55:42.522Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-10T02:55:45.848Z [31merror[39m: [31m500-NEWWWW[39m
+2025-07-10T03:00:58.902Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-10T03:00:58.906Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-10T03:01:00.979Z [31merror[39m: [31m403-NEWWWW[39m
+2025-07-10T03:04:50.012Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-10T03:04:50.017Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-10T03:04:55.083Z [31merror[39m: [31m409-NEWWWW[39m
+2025-07-10T03:05:50.966Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-10T03:05:50.972Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-10T03:07:36.468Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-10T03:07:36.472Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-10T03:07:39.326Z [31merror[39m: [31m409-USER_CANNOT_BE_DELETED[39m
+2025-07-10T03:10:22.172Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-10T03:10:22.177Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-10T03:10:45.681Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-10T03:10:45.685Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-10T03:12:27.005Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-10T03:12:27.009Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-10T03:12:34.994Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-10T03:12:34.999Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-10T03:13:49.907Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-10T03:13:49.911Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-10T03:15:36.892Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-10T03:15:36.897Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-10T03:16:42.194Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-10T03:16:42.199Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-10T03:16:44.930Z [31merror[39m: [31m409-CANNOT_BE_DELETED[39m
+2025-07-10T03:19:21.243Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-10T03:19:21.248Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-10T03:20:39.464Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-10T03:20:39.468Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-10T03:21:59.403Z [31merror[39m: [31m409-CANNOT_BE_DELETED[39m
+2025-07-10T22:30:05.626Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-10T22:30:05.701Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-10T22:33:59.370Z [31merror[39m: [31m404-USER_NOT_FOUND[39m
+2025-07-10T22:34:36.653Z [31merror[39m: [31m409-CANNOT_BE_DELETED[39m
+2025-07-10T22:40:29.044Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-10T22:40:29.049Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-10T22:40:38.943Z [31merror[39m: [31m409-CANNOT_BE_DELETED[39m
+2025-07-10T22:41:21.975Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-10T22:41:21.980Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-10T23:02:46.632Z [31merror[39m: [31mPage not found![39m
+2025-07-10T23:03:46.886Z [31merror[39m: [31m409-CANNOT_BE_DELETED[39m
+2025-07-10T23:03:54.757Z [31merror[39m: [31m409-CANNOT_BE_DELETED[39m
+2025-07-10T23:04:18.321Z [31merror[39m: [31m409-CANNOT_BE_DELETED[39m
+2025-07-11T02:06:04.861Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T02:06:04.866Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T12:47:06.863Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T12:47:06.868Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T12:52:48.677Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T12:52:48.682Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T12:53:21.482Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T12:53:21.487Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T12:54:58.199Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T12:54:58.205Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T12:56:55.768Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T12:56:55.773Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:01:40.221Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:01:40.226Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:03:28.295Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:03:28.300Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:04:11.820Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:04:11.824Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:09:35.613Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:09:35.617Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:09:52.860Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:09:52.864Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:11:04.721Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:11:04.726Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:12:10.170Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:12:10.175Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:17:28.844Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:17:28.849Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:20:57.804Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:20:57.809Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:23:03.752Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:23:03.757Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:24:46.650Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:24:46.655Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:25:02.766Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:25:02.771Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:27:10.284Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:27:10.289Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:27:51.999Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:27:52.004Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:29:33.747Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:29:33.752Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:30:04.793Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:30:04.797Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:30:29.008Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:30:29.012Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:32:02.282Z [31merror[39m: [31m500-Cannot read properties of null (reading 'roles')[39m
+2025-07-11T13:32:53.021Z [31merror[39m: [31m500-Cannot read properties of null (reading 'roles')[39m
+2025-07-11T13:34:45.892Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:34:45.897Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:35:58.028Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:35:58.033Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:38:51.052Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:38:51.057Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:41:49.398Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:41:49.403Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T13:59:36.590Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T13:59:36.595Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T14:21:02.443Z [31merror[39m: [31m401-INVALID_TOKEN[39m
+2025-07-11T14:23:07.776Z [31merror[39m: [31m400-THE_REQUEST_IS_NOT_VALID[39m
+2025-07-11T14:41:36.046Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T14:41:36.052Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T14:44:41.571Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T14:44:41.576Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T14:47:13.863Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T14:47:13.868Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T14:49:38.000Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T14:49:38.005Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T14:51:19.420Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T14:51:19.425Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T14:51:37.134Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T14:51:37.139Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T14:51:51.760Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T14:51:51.766Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T14:51:55.170Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T14:51:55.175Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T14:53:14.519Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T14:53:14.524Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T14:54:10.411Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T14:54:10.416Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T14:54:39.875Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T14:54:39.880Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T14:56:08.167Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T14:56:08.171Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T14:57:56.108Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T14:57:56.112Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T14:58:30.309Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T14:58:30.314Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T14:59:11.261Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T14:59:11.266Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T14:59:22.663Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T14:59:22.668Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:01:33.268Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:01:33.273Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:02:53.022Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:02:53.026Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:03:08.485Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:03:08.489Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:03:28.628Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:03:28.633Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:03:31.330Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:03:31.335Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:04:11.892Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:04:11.896Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:07:15.460Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:07:15.465Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:09:19.347Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:09:19.352Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:10:30.105Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:10:30.109Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:13:38.010Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:13:38.015Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:14:18.046Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:14:18.051Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:14:26.170Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:14:26.175Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:15:24.887Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:15:24.891Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:16:21.602Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:16:21.607Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:18:51.157Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:18:51.161Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:19:55.568Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:19:55.574Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:22:43.609Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:22:43.613Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:24:19.471Z [31merror[39m: [31m500-Unknown column 'User.code_two-factor_auth' in 'field list'[39m
+2025-07-11T15:27:17.625Z [31merror[39m: [31m500-Unknown column 'User.code_two-factor_auth' in 'field list'[39m
+2025-07-11T15:27:30.084Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:27:30.089Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:27:34.944Z [31merror[39m: [31m500-Unknown column 'User.code_two-factor_auth' in 'field list'[39m
+2025-07-11T15:29:41.358Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:29:41.362Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:29:54.975Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:29:54.980Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:32:14.100Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:32:14.105Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:33:25.726Z [31merror[39m: [31m400-THE_REQUEST_IS_NOT_VALID[39m
+2025-07-11T15:38:42.893Z [31merror[39m: [31m400-THE_REQUEST_IS_NOT_VALID[39m
+2025-07-11T15:40:24.419Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:40:24.424Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:40:31.484Z [31merror[39m: [31m404-Error code[39m
+2025-07-11T15:40:48.477Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:40:48.481Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:40:52.189Z [31merror[39m: [31m404-Error code[39m
+2025-07-11T15:41:47.905Z [31merror[39m: [31m404-Error code[39m
+2025-07-11T15:42:44.041Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:42:44.045Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:42:49.683Z [31merror[39m: [31m404-Error code[39m
+2025-07-11T15:43:34.287Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:43:34.292Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:43:35.669Z [31merror[39m: [31m404-Error code[39m
+2025-07-11T15:45:10.536Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:45:10.541Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:45:11.231Z [31merror[39m: [31m404-Error code[39m
+2025-07-11T15:46:01.459Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:46:01.464Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T15:54:29.358Z [31merror[39m: [31m400-INVALID_PASSWORD[39m
+2025-07-11T15:57:34.743Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T15:57:34.748Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T16:51:33.268Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T16:51:33.273Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T16:52:02.916Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T16:52:02.920Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T16:52:17.465Z [31merror[39m: [31m400-INVALID_PASSWORD[39m
+2025-07-11T17:01:16.612Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T17:01:16.617Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T17:01:56.377Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T17:01:56.382Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T17:03:58.140Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T17:03:58.144Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T17:04:32.795Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T17:04:32.800Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T17:06:09.830Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T17:06:09.835Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T17:08:50.970Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T17:08:50.975Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T17:14:19.989Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T17:14:19.994Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T17:19:08.252Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T17:19:08.257Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T17:21:09.041Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T17:21:09.045Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T17:22:03.098Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T17:22:03.103Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T17:27:12.783Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T17:27:12.788Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T17:28:19.278Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T17:28:19.283Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T17:28:34.383Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T17:28:34.387Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T17:32:32.656Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T17:32:32.661Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T17:33:41.115Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T17:33:41.120Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T17:33:50.825Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T17:33:50.829Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T17:35:13.698Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T17:35:13.703Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T17:37:14.215Z [31merror[39m: [31m401-UNAUTHORIZED[39m
+2025-07-11T17:38:06.944Z [31merror[39m: [31m401-UNAUTHORIZED[39m
+2025-07-11T17:39:09.544Z [31merror[39m: [31m401-UNAUTHORIZED[39m
+2025-07-11T17:41:06.761Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T17:41:06.766Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T17:45:16.520Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T17:45:16.525Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:07:35.107Z [31merror[39m: [31mUnable to connect to the database 🤷🏼[39m
+2025-07-11T23:07:46.421Z [31merror[39m: [31mUnable to connect to the database 🤷🏼[39m
+2025-07-11T23:07:53.027Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:07:53.032Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:09:39.892Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:09:39.897Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:10:19.765Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:10:19.770Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:18:51.573Z [31merror[39m: [31m400-INVALID_PASSWORD[39m
+2025-07-11T23:20:01.620Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:20:01.625Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:20:26.589Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:20:26.594Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:20:36.322Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:20:36.327Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:21:13.504Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:21:13.508Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:23:14.669Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:23:14.673Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:23:47.770Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:23:47.775Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:23:57.042Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:23:57.047Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:24:03.075Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:24:03.080Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:24:10.076Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:24:10.080Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:24:23.041Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:24:23.046Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:24:56.274Z [31merror[39m: [31m401-UNAUTHORIZED[39m
+2025-07-11T23:29:27.815Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:29:27.820Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:36:43.683Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:36:43.688Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:38:24.071Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:38:24.076Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:38:47.630Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:38:47.635Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:42:41.563Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:42:41.567Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:44:30.598Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:44:30.603Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:45:18.207Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:45:18.212Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:46:05.417Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:46:05.422Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:46:28.993Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:46:28.998Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:46:35.293Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:46:35.298Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:47:26.216Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:47:26.221Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:48:35.824Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:48:35.829Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:50:02.164Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:50:02.169Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-11T23:51:32.256Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-11T23:51:32.260Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T00:17:38.291Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T00:17:38.296Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T00:18:45.880Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T00:18:45.884Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T00:18:48.929Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T00:18:48.934Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T00:19:18.275Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T00:19:18.280Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T00:20:40.513Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T00:20:40.517Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T00:21:50.881Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T00:21:50.886Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T00:22:35.140Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T00:22:35.144Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T00:24:39.126Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T00:24:39.132Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T00:27:16.019Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T00:27:16.024Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T00:27:52.902Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T00:27:52.907Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T00:32:55.881Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T00:32:55.885Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T00:34:26.336Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T00:34:26.341Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T00:34:53.622Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T00:34:53.626Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T00:35:33.850Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T00:35:33.855Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T00:40:09.481Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T00:40:09.486Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T00:47:41.776Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T00:47:41.781Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T00:48:20.739Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T00:48:20.744Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T00:48:29.434Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T00:48:29.439Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:00:24.318Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:00:24.323Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:03:00.841Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:03:00.845Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:05:57.186Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:05:57.191Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:06:27.170Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:06:27.175Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:07:49.765Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:07:49.769Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:08:41.816Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:08:41.821Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:09:58.603Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:09:58.608Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:11:24.281Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:11:24.285Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:11:40.616Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:11:40.621Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:13:43.546Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:13:43.551Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:18:11.928Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:18:11.933Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:18:34.526Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:18:34.531Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:18:44.175Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:18:44.179Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:22:32.491Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:22:32.496Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:25:29.895Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:25:29.900Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:27:15.662Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:27:15.667Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:28:21.703Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:28:21.708Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:29:13.514Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:29:13.518Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:30:49.415Z [31merror[39m: [31m500-token is not defined[39m
+2025-07-12T01:31:08.558Z [31merror[39m: [31m500-token is not defined[39m
+2025-07-12T01:31:29.827Z [31merror[39m: [31m500-token is not defined[39m
+2025-07-12T01:31:35.955Z [31merror[39m: [31m500-token is not defined[39m
+2025-07-12T01:32:38.319Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:32:38.324Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:34:13.725Z [31merror[39m: [31m500-token is not defined[39m
+2025-07-12T01:34:50.140Z [31merror[39m: [31m500-token is not defined[39m
+2025-07-12T01:35:41.138Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:35:41.143Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:35:55.109Z [31merror[39m: [31m404-ERROR_CODE_2FA[39m
+2025-07-12T01:37:30.243Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:37:30.248Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T01:53:50.878Z [31merror[39m: [31m401-UNAUTHORIZED[39m
+2025-07-12T01:58:21.233Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T01:58:21.237Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T02:00:07.601Z [31merror[39m: [31m404-ERROR_CODE_2FA[39m
+2025-07-12T22:37:09.542Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T22:37:09.547Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T22:40:32.554Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T22:40:32.559Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T22:48:57.352Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T22:48:57.357Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T22:50:36.999Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T22:50:37.004Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T22:50:49.550Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T22:50:49.555Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T22:51:04.341Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T22:51:04.346Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T22:51:32.551Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T22:51:32.556Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T22:51:45.463Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T22:51:45.467Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T22:51:54.790Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T22:51:54.794Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T22:52:24.400Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T22:52:24.406Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T22:53:26.562Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T22:53:26.566Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T22:53:40.191Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T22:53:40.195Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-12T22:53:49.470Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-12T22:53:49.476Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-13T00:59:57.642Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-13T00:59:57.647Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-13T01:00:23.463Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-13T01:00:23.468Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-13T01:00:28.843Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-13T01:00:28.848Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-13T01:03:41.167Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-13T01:03:41.172Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-13T01:03:57.400Z [31merror[39m: [31m500-serviceAdmin is not defined[39m
+2025-07-13T01:04:44.697Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-13T01:04:44.703Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-13T01:06:37.233Z [31merror[39m: [31m500-serviceAdmin is not defined[39m
+2025-07-13T01:07:34.034Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-13T01:07:34.039Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-13T02:21:58.664Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-13T02:21:58.668Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-13T02:31:44.534Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-13T02:31:44.539Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-13T02:34:10.087Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-13T02:34:10.092Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-13T02:35:14.624Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-13T02:35:14.628Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-13T02:41:29.815Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-13T02:41:29.820Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-13T02:43:42.878Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-13T02:43:42.884Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T01:25:46.284Z [31merror[39m: [31mUnable to connect to the database 🤷🏼[39m
+2025-07-14T01:26:36.464Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T01:26:36.469Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T01:27:12.845Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T01:27:12.850Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T01:30:11.362Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T01:30:11.367Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T01:32:58.878Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T01:32:58.883Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T01:39:49.944Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T01:39:49.948Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T11:00:39.398Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T11:00:39.403Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T11:35:56.918Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T11:35:56.922Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T11:40:19.283Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T11:40:19.288Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T11:41:34.124Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T11:41:34.129Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T11:41:44.622Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T11:41:44.627Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T11:41:50.857Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T11:41:50.861Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T11:42:19.806Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T11:42:19.810Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T11:43:21.774Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T11:43:21.778Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T11:44:19.157Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T11:44:19.162Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T11:45:34.882Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T11:45:34.887Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T11:48:52.809Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T11:48:52.813Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T11:50:23.932Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T11:50:23.937Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T11:52:36.348Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T11:52:36.353Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T11:52:51.754Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T11:52:51.759Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T11:53:08.787Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T11:53:08.792Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T11:53:12.351Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T11:53:12.357Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T11:54:48.081Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T11:54:48.086Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T11:58:58.922Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T11:58:58.926Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T11:59:27.225Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T11:59:27.229Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T12:03:04.195Z [31merror[39m: [31m401-UNAUTHORIZED[39m
+2025-07-14T12:03:14.075Z [31merror[39m: [31m401-UNAUTHORIZED[39m
+2025-07-14T12:05:57.066Z [31merror[39m: [31m401-UNAUTHORIZED[39m
+2025-07-14T12:06:28.913Z [31merror[39m: [31m401-UNAUTHORIZED[39m
+2025-07-14T12:07:40.138Z [31merror[39m: [31m401-UNAUTHORIZED[39m
+2025-07-14T12:08:49.050Z [32minfo[39m: [32mConnection to the database has been established successfully.[39m
+2025-07-14T12:08:49.054Z [32minfo[39m: [32mServer is running on port 3000.[39m
+2025-07-14T12:16:58.248Z [31merror[39m: [31m401-UNAUTHORIZED[39m
+2025-07-14T12:19:03.740Z [31merror[39m: [31m401-UNAUTHORIZED[39m

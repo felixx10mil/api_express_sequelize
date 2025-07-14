@@ -90,6 +90,7 @@ const profileUpdate = async (req, res, next) => {
 		return next(createError(e?.status || 500, e?.message || 'ERROR'));
 	}
 };
+
 /**
  * Update photo of authenticated user
  *
@@ -120,10 +121,34 @@ const photoUpdate = async (req, res, next) => {
 	}
 };
 
+/**
+ * Active 2fa
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ * @returns
+ */
+
+const active2Fa = async (req, res, next) => {
+	const { id, ...body } = matchedData(req);
+	try {
+		const response = await serviceUser.active2Fa(parseInt(id), body);
+		res.status(200).json({
+			status: 'OK',
+			data: [],
+			message: response,
+		});
+	} catch (e) {
+		return next(createError(e?.status || 500, e?.message || 'ERROR'));
+	}
+};
+
 module.exports = {
 	getUserById,
 	accountUpdate,
 	passwordUpdate,
 	profileUpdate,
 	photoUpdate,
+	active2Fa,
 };

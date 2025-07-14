@@ -15,7 +15,7 @@ const getUserById = async id => {
 	try {
 		//find user
 		const user = await User.findByPk(id, {
-			attributes: ['id', 'name', 'email', 'status'],
+			attributes: ['id', 'name', 'email', 'status', 'is2fa'],
 			include: [
 				{
 					association: 'profile',
@@ -89,6 +89,7 @@ const accountUpdate = async (id, body) => {
 		throw e;
 	}
 };
+
 /**
  * Update password
  *
@@ -204,10 +205,39 @@ const photoUpdate = async (id, file) => {
 	}
 };
 
+/**
+ * Active 2fa
+ *
+ * @param {*} id
+ * @param {*} f2a
+ * @returns
+ */
+const active2Fa = async (id, { is2fa }) => {
+	try {
+		// Buscar usuario
+		const user = await User.findByPk(id);
+		if (!user) {
+			throw {
+				status: 404,
+				message: 'USER_NOT_FOUND',
+			};
+		}
+
+		// Update status
+		await user.update({ is2fa });
+
+		// Enviar respuesta
+		return `Two-factor is ${is2fa}`;
+	} catch (e) {
+		throw e;
+	}
+};
+
 module.exports = {
 	getUserById,
 	accountUpdate,
 	passwordUpdate,
 	profileUpdate,
 	photoUpdate,
+	active2Fa,
 };
