@@ -1,7 +1,7 @@
 import { Op } from 'sequelize';
 import { User, Role } from '../models/index.js';
 import deleteFile from '../utils/deleteFile.js';
-import mapRoleOptions from '../utils/mapRoleOptions.js';
+import { mapRoleOptions } from '../utils/mapRoleOptions.js';
 
 /**
  * Return users

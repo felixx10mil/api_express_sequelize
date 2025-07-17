@@ -53,6 +53,7 @@ const getRoles = async (req, res, next) => {
  */
 const getRolesByUser = async (req, res, next) => {
 	const { id } = matchedData(req);
+
 	try {
 		const roles = await serviceAdmin.getRolesByUser(parseInt(id));
 		res.status(200).json({
@@ -75,6 +76,7 @@ const getRolesByUser = async (req, res, next) => {
 
 const updateUserStatus = async (req, res, next) => {
 	const { id, ...body } = matchedData(req);
+
 	try {
 		const response = await serviceAdmin.updateUserStatus(parseInt(id), body);
 		res.status(200).json({
@@ -97,6 +99,7 @@ const updateUserStatus = async (req, res, next) => {
  */
 const updateUserRole = async (req, res, next) => {
 	const { id, ...body } = matchedData(req);
+
 	try {
 		const response = await serviceAdmin.updateUserRole(parseInt(id), body);
 		res.status(200).json({

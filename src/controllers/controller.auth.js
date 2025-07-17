@@ -32,7 +32,7 @@ const signup = async (req, res, next) => {
 };
 
 /**
- * login
+ * Login
  *
  * @param {*} req
  * @param {*} res
@@ -44,17 +44,6 @@ const login = async (req, res, next) => {
 	const { email, password } = matchedData(req);
 	try {
 		const response = await serviceAuth.login(email, password);
-
-		// Genera una cookie
-		// const expiryDate = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
-		// res.cookie('access_token', token, {
-		// 	secure: false,
-		// 	httpOnly: true,
-		// 	domain: 'example.com',
-		// 	path: 'foo/bar',
-		// 	expires: expiryDate,
-		// });
-
 		res.status(200).json({
 			status: 'OK',
 			data: {
@@ -154,12 +143,12 @@ const verifyAuthEmail = async (req, res, next) => {
  * @returns
  */
 
-const confirmAccount = async (req, res, next) => {
+const confirmEmail = async (req, res, next) => {
 	// Data
 	const { token } = matchedData(req);
 
 	try {
-		const response = await serviceAuth.confirmAccount(token);
+		const response = await serviceAuth.confirmEmail(token);
 		res.status(200).json({
 			status: 'OK',
 			data: [],
@@ -225,7 +214,7 @@ module.exports = {
 	verify2fa,
 	sendAuthEmail,
 	verifyAuthEmail,
-	confirmAccount,
+	confirmEmail,
 	forgotPassword,
 	resetPassword,
 };

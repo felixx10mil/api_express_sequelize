@@ -3,7 +3,7 @@
  * @param {*} roles
  * @returns
  */
-const mapRoleOptions = async roles => {
+export const mapRoleOptions = async roles => {
 	try {
 		const response = await roles.map(role => {
 			return {
@@ -17,5 +17,3 @@ const mapRoleOptions = async roles => {
 		return null;
 	}
 };
-
-module.exports = mapRoleOptions;

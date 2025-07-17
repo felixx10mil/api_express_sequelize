@@ -1,6 +1,6 @@
 import { Op } from 'sequelize';
 import { User, Profile } from '../models/index.js';
-import { comparePass } from '../utils/handleBcrypt.js';
+import { decrypt } from '../utils/handleBcrypt.js';
 import deleteFile from '../utils/deleteFile.js';
 import resizeImage from '../utils/resizeImage.js';
 
@@ -70,18 +70,15 @@ const accountUpdate = async (id, body) => {
 		}
 
 		// Checar contraseña
-		if (!(await comparePass(body.currentPassword, user.password))) {
+		if (!(await decrypt(body.currentPassword, user.password))) {
 			throw {
 				status: 400,
 				message: 'INVALID_PASSWORD',
 			};
 		}
 
-		// Set user
-		user.set({ name: body.name, email: body.email });
-
 		// Update
-		await user.save();
+		await user.update({ name: body.name, email: body.email });
 
 		// Return
 		return 'Information updated.';
@@ -109,7 +106,7 @@ const passwordUpdate = async (id, body) => {
 		}
 
 		// Checar contraseña
-		if (!(await comparePass(body.currentPassword, user.password))) {
+		if (!(await decrypt(body.currentPassword, user.password))) {
 			throw {
 				status: 400,
 				message: 'INVALID_PASSWORD',
@@ -125,6 +122,7 @@ const passwordUpdate = async (id, body) => {
 		throw e;
 	}
 };
+
 /**
  * Update first_name,last_name,biography
  *
@@ -143,15 +141,12 @@ const profileUpdate = async (id, body) => {
 			};
 		}
 
-		// Set profile
-		profile.set({
+		// Update profile
+		await profile.update({
 			first_name: body.first_name,
 			last_name: body.last_name,
 			biography: body.biography,
 		});
-
-		// Update profile
-		await profile.save();
 
 		// Messagge
 		return 'Information updated.';
@@ -192,11 +187,8 @@ const photoUpdate = async (id, file) => {
 			await deleteFile(profile.avatar);
 		}
 
-		// Set profie
-		profile.set({ avatar: resizedImage });
-
 		// Update rofile
-		profile.save();
+		await profile.update({ avatar: resizedImage });
 
 		// Respuesta
 		return 'Information updated.';

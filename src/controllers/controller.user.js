@@ -3,7 +3,7 @@ import { matchedData } from 'express-validator';
 import serviceUser from '../services/service.user.js';
 
 /**
- * Get user
+ * Get user by id
  *
  * @param {*} req
  * @param {*} res
@@ -13,6 +13,7 @@ import serviceUser from '../services/service.user.js';
 
 const getUserById = async (req, res, next) => {
 	const { id } = matchedData(req);
+
 	try {
 		const user = await serviceUser.getUserById(parseInt(id));
 		res.status(200).json({
@@ -25,7 +26,7 @@ const getUserById = async (req, res, next) => {
 };
 
 /**
- * Update account of authenticated user
+ * Update account
  *
  * @param {*} req
  * @param {*} res
@@ -35,6 +36,7 @@ const getUserById = async (req, res, next) => {
 
 const accountUpdate = async (req, res, next) => {
 	const { id, ...body } = matchedData(req);
+
 	try {
 		const response = await serviceUser.accountUpdate(parseInt(id), body);
 		res.status(200).json({
@@ -47,7 +49,7 @@ const accountUpdate = async (req, res, next) => {
 	}
 };
 /**
- * Update password of authenticated user
+ * Update password
  *
  * @param {*} req
  * @param {*} res
@@ -57,6 +59,7 @@ const accountUpdate = async (req, res, next) => {
 
 const passwordUpdate = async (req, res, next) => {
 	const { id, ...body } = matchedData(req);
+
 	try {
 		const response = await serviceUser.passwordUpdate(parseInt(id), body);
 		res.status(200).json({
@@ -69,7 +72,7 @@ const passwordUpdate = async (req, res, next) => {
 	}
 };
 /**
- * Update profile of authenticated user
+ * Profile update
  *
  * @param {*} req
  * @param {*} res
@@ -79,6 +82,7 @@ const passwordUpdate = async (req, res, next) => {
 
 const profileUpdate = async (req, res, next) => {
 	const { id, ...body } = matchedData(req);
+
 	try {
 		const response = await serviceUser.profileUpdate(parseInt(id), body);
 		res.status(200).json({
@@ -92,7 +96,7 @@ const profileUpdate = async (req, res, next) => {
 };
 
 /**
- * Update photo of authenticated user
+ * Photo update
  *
  * @param {*} req
  * @param {*} res
@@ -102,12 +106,7 @@ const profileUpdate = async (req, res, next) => {
 
 const photoUpdate = async (req, res, next) => {
 	const { filename } = req.file;
-
 	const { id } = matchedData(req);
-
-	if (!id) {
-		return next(createError(404, 'ID_NOT_FOUND'));
-	}
 
 	try {
 		const response = await serviceUser.photoUpdate(parseInt(id), filename);
@@ -132,6 +131,7 @@ const photoUpdate = async (req, res, next) => {
 
 const active2Fa = async (req, res, next) => {
 	const { id, ...body } = matchedData(req);
+
 	try {
 		const response = await serviceUser.active2Fa(parseInt(id), body);
 		res.status(200).json({

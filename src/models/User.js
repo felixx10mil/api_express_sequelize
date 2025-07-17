@@ -1,5 +1,5 @@
 import { Model } from 'sequelize';
-import { encryptPass } from '../utils/handleBcrypt';
+import { encrypt } from '../utils/handleBcrypt';
 
 module.exports = (sequelize, DataTypes) => {
 	class User extends Model {
@@ -51,12 +51,12 @@ module.exports = (sequelize, DataTypes) => {
 	);
 	// Set password before saving
 	User.beforeCreate(async model => {
-		model.password = await encryptPass(model.password);
+		model.password = await encrypt(model.password);
 	});
 	// Set password before upgrading
 	User.beforeUpdate(async model => {
 		if (model.changed('password')) {
-			model.password = await encryptPass(model.password);
+			model.password = await encrypt(model.password);
 		}
 	});
 

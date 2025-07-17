@@ -3,7 +3,7 @@
  * @param {*} length
  * @returns
  */
-const generateRandomString = async length => {
+export const generateRandomString = async length => {
 	try {
 		const characters =
 			'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -15,8 +15,4 @@ const generateRandomString = async length => {
 	} catch (e) {
 		return null;
 	}
-};
-
-module.exports = {
-	generateRandomString,
 };

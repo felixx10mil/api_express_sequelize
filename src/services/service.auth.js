@@ -1,19 +1,19 @@
 import randomstring from 'randomstring';
-import { comparePass, encryptPass } from '../utils/handleBcrypt.js';
+import { decrypt, encrypt } from '../utils/handleBcrypt.js';
 import { signToken, verifyToken } from '../utils/handleJwt.js';
 import { User } from '../models/index.js';
 import mail from '../config/mail.js';
-import mapRole from '../utils/mapRoleAuth.js';
+import { mapRole } from '../utils/mapRoleAuth.js';
 
 /**
- * Register user
+ * Signup
  *
- * @param {*} fullName
+ * @param {*} firstName
+ * @param {*} lastName
  * @param {*} email
  * @param {*} password
  * @returns
  */
-
 const signup = async (firstName, lastName, email, password) => {
 	const name = email.split('@')[0];
 	try {
@@ -60,7 +60,7 @@ const signup = async (firstName, lastName, email, password) => {
 		);
 
 		// Link
-		const link = `${process.env.DOMAIN_PRODUCTION}/confirm/account/${token}`;
+		const link = `${process.env.DOMAIN_PRODUCTION}/confirm/email/${token}`;
 
 		// Enviar email
 		await mail({
@@ -72,11 +72,12 @@ const signup = async (firstName, lastName, email, password) => {
 			template: 'email_confirm.ejs',
 		});
 
-		return 'You have successfully registered, we send a link to check your email address.';
+		return 'A confirmation link was sent to the e-mail.';
 	} catch (e) {
 		throw e;
 	}
 };
+
 /**
  * Login
  *
@@ -89,16 +90,9 @@ const login = async (email, password) => {
 		// Consultar el usuario por el email
 		const user = await User.findOne({
 			where: { email },
-			attributes: [
-				'id',
-				'name',
-				'email',
-				'email_verified_at',
-				'status',
-				'is2fa',
-				'code2fa',
-				'password',
-			],
+			attributes: {
+				exclude: ['createdAt', 'updatedAt'],
+			},
 			include: [
 				{
 					association: 'roles',
@@ -119,7 +113,7 @@ const login = async (email, password) => {
 		}
 
 		// Verifica la contraseña
-		if (!(await comparePass(password, user.password))) {
+		if (!(await decrypt(password, user.password))) {
 			throw {
 				status: 400,
 				message: 'INVALID_PASSWORD',
@@ -168,7 +162,7 @@ const login = async (email, password) => {
 			});
 
 			// Encriptar code
-			const hash2fa = await encryptPass(randomSting);
+			const hash2fa = await encrypt(randomSting);
 
 			// Update code2fa to user table
 			user.update({ code2fa: hash2fa });
@@ -198,6 +192,7 @@ const login = async (email, password) => {
 					name: user.name,
 					email: user.email,
 					is2fa: user.is2fa,
+					roles: roles,
 				},
 				token,
 				message: 'You are successfully logged in.',
@@ -249,7 +244,7 @@ const verify2fa = async (token, code) => {
 		}
 
 		// Verify code
-		if (!(await comparePass(code, user.code2fa))) {
+		if (!(await decrypt(code, user.code2fa))) {
 			throw {
 				status: 409,
 				message: 'ERROR_CODE_2FA',
@@ -405,12 +400,12 @@ const verifyAuthEmail = async token => {
 };
 
 /**
- * Confirm account
+ * Confirm email
  *
  * @param {*} token
  * @returns
  */
-const confirmAccount = async token => {
+const confirmEmail = async token => {
 	try {
 		//Verify token
 		const dataToken = await verifyToken(
@@ -550,7 +545,7 @@ module.exports = {
 	verify2fa,
 	sendAuthEmail,
 	verifyAuthEmail,
-	confirmAccount,
+	confirmEmail,
 	forgotPassword,
 	resetPassword,
 };

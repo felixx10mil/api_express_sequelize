@@ -25,9 +25,9 @@ router.post(
 	controllerAuth.forgotPassword,
 );
 router.post(
-	'/confirm/account',
+	'/confirm/email',
 	validationAuth.token,
-	controllerAuth.confirmAccount,
+	controllerAuth.confirmEmail,
 );
 router.post(
 	'/reset/password',

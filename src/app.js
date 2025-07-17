@@ -22,8 +22,8 @@ const whiteList = process.env.NODE_ENV
 
 app.use(
 	cors({
-		credentials: true,
 		origin: whiteList,
+		credentials: true,
 	}),
 );
 
