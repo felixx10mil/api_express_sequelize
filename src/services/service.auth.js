@@ -251,7 +251,7 @@ const verify2fa = async (token, code) => {
 			};
 		}
 
-		// mapRole return un array ['user','admin','...']
+		// Return un array ['user','admin','...']
 		const roles = await mapRole(user.roles);
 
 		// Generamos el token con el id del usuario y los roles
@@ -375,7 +375,7 @@ const verifyAuthEmail = async token => {
 			};
 		}
 
-		// mapRole return un array ['user','admin','...']
+		// Return un array ['user','admin','...']
 		const roles = await mapRole(user.roles);
 
 		// Generamos el token con el id del usuario y los roles

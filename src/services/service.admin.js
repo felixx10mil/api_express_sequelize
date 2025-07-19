@@ -1,7 +1,6 @@
 import { Op } from 'sequelize';
 import { User, Role } from '../models/index.js';
 import deleteFile from '../utils/deleteFile.js';
-import { mapRoleOptions } from '../utils/mapRoleOptions.js';
 
 /**
  * Return users
@@ -45,13 +44,17 @@ const getRoles = async () => {
 			attributes: ['id', 'name'],
 		});
 
-		// Map role option return array [{label:'admin',value:1,disable:true}, ...]
-		const roles = await mapRoleOptions(data);
+		// Return array [{label:'admin',value:1,disable:true}, ...]
+		const roles = await data.map(role => {
+			return {
+				label: role.name,
+				value: role.id,
+				disable: role.name === 'user' ? true : false,
+			};
+		});
 
 		// Response
-		return {
-			roles,
-		};
+		return roles;
 	} catch (e) {
 		throw e;
 	}
@@ -85,9 +88,7 @@ const getRolesByUser = async id => {
 		const roles = await data.roles.map(role => role.id);
 
 		// Response
-		return {
-			roles,
-		};
+		return roles;
 	} catch (e) {
 		throw e;
 	}

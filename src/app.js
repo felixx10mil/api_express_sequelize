@@ -16,9 +16,12 @@ import routeAdmin from './routes/v1/route.admin.js';
 const app = express();
 
 //  Cors
-const whiteList = process.env.NODE_ENV
-	? [process.env.DOMAIN_PRODUCTION]
-	: [process.env.DOMAIN_DEVELOPER];
+const whiteList =
+	process.env.NODE_ENV === 'production'
+		? [process.env.DOMAIN_PRODUCTION]
+		: [process.env.DOMAIN_DEVELOPER];
+
+console.log(whiteList);
 
 app.use(
 	cors({
