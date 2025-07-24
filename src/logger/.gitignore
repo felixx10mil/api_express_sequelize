@@ -1,2 +1,6 @@
 *
+
 !.gitignore
+
+# ... and all text files.
+!*.log

@@ -7,12 +7,12 @@ import jwt from 'jsonwebtoken';
  * @param {*} expire
  * @returns
  */
-const signToken = async (peyload, secret, expire) => {
-	const token = jwt.sign(peyload, secret, {
+
+function signToken(peyload, secret, expire = '1h') {
+	return jwt.sign(peyload, secret, {
 		expiresIn: expire,
 	});
-	return token;
-};
+}
 
 /**
  * verifyToken
@@ -20,13 +20,14 @@ const signToken = async (peyload, secret, expire) => {
  * @param {*} secret
  * @returns
  */
-const verifyToken = async (token, secret) => {
+
+function verifyToken(token, secret) {
 	try {
 		return jwt.verify(token, secret);
 	} catch (e) {
 		return null;
 	}
-};
+}
 
 module.exports = {
 	signToken,

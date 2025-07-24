@@ -32,7 +32,7 @@ module.exports = {
 			[
 				{
 					user_id: 1,
-					role_id: 1,
+					role_id: 3,
 					createdAt: new Date(),
 					updatedAt: new Date(),
 				},

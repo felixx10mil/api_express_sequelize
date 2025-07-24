@@ -3,7 +3,7 @@ import path from 'path';
 import Sequelize from 'sequelize';
 
 const env = process.env.NODE_ENV;
-const config = require(path.join(__dirname, '../database/config.js'))[env];
+const config = require(path.join(__dirname, '../config/db_config.js'))[env];
 const basename = path.basename(__filename);
 const db = {};
 
@@ -16,7 +16,7 @@ let sequelize = new Sequelize(
 		host: config.host,
 		port: config.port,
 		dialect: config.dialect,
-		logging: env === 'production' ? false : console.log,
+		logging: config.logging,
 	},
 );
 // Asociations

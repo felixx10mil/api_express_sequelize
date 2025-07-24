@@ -17,8 +17,7 @@ import { mapRole } from '../utils/mapRoleAuth.js';
 const signup = async (firstName, lastName, email, password) => {
 	const name = email.split('@')[0];
 	try {
-		// Verify the existence of the e-mail address
-		// Avoid a duplication error.
+		// Consulta un usuario a traves del e-mail
 		const checkEmail = await User.findOne({ where: { email } });
 		if (checkEmail) {
 			throw {
@@ -49,15 +48,14 @@ const signup = async (firstName, lastName, email, password) => {
 			},
 		);
 
-		// Setear los roles
+		// Asigna el role 1 al usuario registrado
 		await user.setRoles(1); // TODO: 👈👈 revisar con cual role relaciona
 
 		// Generar un token
-		const token = await signToken(
-			{ user: user.id },
-			process.env.SECRET_REGISTER_PASSWORD,
-			process.env.REGISTER_PASSWORD_EXPIRE,
-		);
+		const peyload = { user: user.id };
+		const secret = process.env.SECRET_REGISTER_PASSWORD;
+		const expire_time = '1d';
+		const token = await signToken(peyload, secret, expire_time);
 
 		// Link
 		const link = `${process.env.DOMAIN_PRODUCTION}/confirm/email/${token}`;
@@ -87,7 +85,7 @@ const signup = async (firstName, lastName, email, password) => {
  */
 const login = async (email, password) => {
 	try {
-		// Consultar el usuario por el email
+		// Consulta un usuario a traves del e-mail
 		const user = await User.findOne({
 			where: { email },
 			attributes: {
@@ -120,7 +118,7 @@ const login = async (email, password) => {
 			};
 		}
 
-		// Verifica si el email esta verificado
+		// Checa que el email esta verificado
 		if (user.email_verified_at === null || user.email_verified_at === '') {
 			throw {
 				status: 400,
@@ -136,38 +134,36 @@ const login = async (email, password) => {
 			};
 		}
 
-		// mapRole return un array ['user','admin','...']
+		// Formatea los roles ['user','admin','...']
 		const roles = await mapRole(user.roles);
 
-		// Generamos el token con el id del usuario y los roles
-		const token = await signToken(
-			{ user: user.id, roles: roles },
-			process.env.SECRET_SESSION,
-			process.env.SESSION_EXPIRE,
-		);
+		// Generar un token
+		const peyload = { user: user.id, roles: roles };
+		const secret = process.env.SECRET_SESSION;
+		const expire_time = '1h';
+		const token = await signToken(peyload, secret, expire_time);
 
 		// Verify is2FA is active
 		if (user.is2fa === 'active') {
-			// Generamos el token con el id del usuario
-			const token2fa = await signToken(
-				{ user: user.id },
-				process.env.SECRET_SESSION_TWO,
-				process.env.SECRET_SESSION_TWO_EXPIRE,
-			);
+			// Generar un token
+			const peyload = { user: user.id };
+			const secret = process.env.SECRET_SESSION_TWO;
+			const expire_time = '1h';
+			const token2fa = await signToken(peyload, secret, expire_time);
 
-			// Generate a six-digit number
+			// Genera una codigo de 6 digitos aleatorios
 			const randomSting = randomstring.generate({
 				length: 6,
 				charset: ['numeric'],
 			});
 
-			// Encriptar code
+			// Encriptar codigo generado
 			const hash2fa = await encrypt(randomSting);
 
-			// Update code2fa to user table
+			// Setea el campo code2fa
 			user.update({ code2fa: hash2fa });
 
-			// Enviar code2fa por email
+			// Envia code2fa por e-mail
 			await mail({
 				from: process.env.NAME_PROJECT,
 				to: user.email,
@@ -192,7 +188,6 @@ const login = async (email, password) => {
 					name: user.name,
 					email: user.email,
 					is2fa: user.is2fa,
-					roles: roles,
 				},
 				token,
 				message: 'You are successfully logged in.',
@@ -251,15 +246,14 @@ const verify2fa = async (token, code) => {
 			};
 		}
 
-		// Return un array ['user','admin','...']
+		// Formatea los roles ['user','admin','...']
 		const roles = await mapRole(user.roles);
 
-		// Generamos el token con el id del usuario y los roles
-		const key = await signToken(
-			{ user: user.id, roles: roles },
-			process.env.SECRET_SESSION,
-			process.env.SESSION_EXPIRE,
-		);
+		// Generar un token
+		const peyload = { user: user.id, roles: roles };
+		const secret = process.env.SECRET_SESSION;
+		const expire_time = '1h';
+		const key = await signToken(peyload, secret, expire_time);
 
 		// return data
 		return {
@@ -313,15 +307,15 @@ const sendAuthEmail = async email => {
 			};
 		}
 
-		// Generamos el token con el id del usuario
-		const token = await signToken(
-			{ user: user.id },
-			process.env.SECRET_SESSION_TWO,
-			process.env.SECRET_SESSION_TWO_EXPIRE,
-		);
+		// Generar un token
+		const peyload = { user: user.id };
+		const secret = process.env.SECRET_SESSION_TWO;
+		const expire_time = '2m';
+		const token = await signToken(peyload, secret, expire_time);
 
 		// Generate link
 		const link = `${process.env.DOMAIN_PRODUCTION}/verify/auth/email/${token}`;
+
 		// Send email
 		await mail({
 			from: process.env.NAME_PROJECT,
@@ -375,15 +369,14 @@ const verifyAuthEmail = async token => {
 			};
 		}
 
-		// Return un array ['user','admin','...']
+		// Formatea los roles ['user','admin','...']
 		const roles = await mapRole(user.roles);
 
-		// Generamos el token con el id del usuario y los roles
-		const key = await signToken(
-			{ user: user.id, roles: roles },
-			process.env.SECRET_SESSION,
-			process.env.SESSION_EXPIRE,
-		);
+		// Generar un token
+		const peyload = { user: user.id, roles: roles };
+		const secret = process.env.SECRET_SESSION;
+		const expire_time = '1h';
+		const key = await signToken(peyload, secret, expire_time);
 
 		// return data
 		return {
@@ -412,6 +405,7 @@ const confirmEmail = async token => {
 			token,
 			process.env.SECRET_REGISTER_PASSWORD,
 		);
+
 		if (!dataToken) {
 			throw {
 				status: 401,
@@ -436,6 +430,7 @@ const confirmEmail = async token => {
 		throw e;
 	}
 };
+
 /**
  * Forgo password
  *
@@ -474,12 +469,12 @@ const forgotPassword = async email => {
 			};
 		}
 
-		// Genera un token
-		const token = await signToken(
-			{ user: user.id },
-			process.env.SECRET_RESET_PASSWORD,
-			process.env.RESET_PASSWORD_EXPIRE,
-		);
+		// Generar un token
+		const peyload = { user: user.id };
+		const secret = process.env.SECRET_RESET_PASSWORD;
+		const expire_time = '15m';
+		const token = await signToken(peyload, secret, expire_time);
+
 		// Generate link
 		const link = `${process.env.DOMAIN_PRODUCTION}/reset/password/${token}`;
 
@@ -499,6 +494,7 @@ const forgotPassword = async email => {
 		throw e;
 	}
 };
+
 /**
  * Reset password
  *

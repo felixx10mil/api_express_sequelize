@@ -16,16 +16,14 @@ import routeAdmin from './routes/v1/route.admin.js';
 const app = express();
 
 //  Cors
-const whiteList =
-	process.env.NODE_ENV === 'production'
-		? [process.env.DOMAIN_PRODUCTION]
-		: [process.env.DOMAIN_DEVELOPER];
-
-console.log(whiteList);
-
+const whiteList = [
+	process.env.DOMAIN_DEVELOPMENT,
+	process.env.DOMAIN_PRODUCTION,
+];
 app.use(
 	cors({
 		origin: whiteList,
+		methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 		credentials: true,
 	}),
 );
@@ -40,7 +38,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'storage')));
 
 //  Routes
-app.use('/api/v1', routeHome);
+app.use('/', routeHome);
 app.use('/api/v1/auth', routeAuth);
 app.use('/api/v1/users', routeUser);
 app.use('/api/v1/admin', routeAdmin);

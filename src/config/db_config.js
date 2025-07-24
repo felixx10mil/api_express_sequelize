@@ -6,13 +6,13 @@ module.exports = {
 		host: '127.0.0.1',
 		port: 3306,
 		dialect: 'mysql',
+		logging: true, // Set to true if you want to see SQL queries in the console
 		dialectOptions: {
-			bigNumberStrings: true,
+			ssl: {
+				require: true,
+				rejectUnauthorized: false,
+			},
 		},
-		seederStorage: 'sequelize',
-		seederStorageTableName: 'seeds',
-		migrationStorage: 'sequelize',
-		migrationStorageTableName: 'migrations',
 	},
 	production: {
 		username: process.env.DB_USERNAME,
@@ -21,12 +21,12 @@ module.exports = {
 		host: process.env.DB_HOST,
 		port: process.env.DB_PORT,
 		dialect: process.env.DB_DIALECT,
+		logging: false,
 		dialectOptions: {
-			bigNumberStrings: true,
+			ssl: {
+				require: true,
+				rejectUnauthorized: false,
+			},
 		},
 	},
 };
-
-// ssl: {
-// 	ca: fs.readFileSync(__dirname + '/mysql-ca-main.crt'),
-// },
