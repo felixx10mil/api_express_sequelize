@@ -32,7 +32,7 @@ const logger = createLogger({
 		new transports.File({
 			maxsize: 5120000,
 			maxFiles: 3,
-			filename: `${__dirname}/../logger/api.log`,
+			filename: `${__dirname}/../logs/api.log`,
 		}),
 	],
 });

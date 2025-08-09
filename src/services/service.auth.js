@@ -85,7 +85,7 @@ const signup = async (firstName, lastName, email, password) => {
  */
 const login = async (email, password) => {
 	try {
-		// Consulta un usuario a traves del e-mail
+		// Consulta un usuario a travez del e-mail
 		const user = await User.findOne({
 			where: { email },
 			attributes: {
@@ -208,7 +208,8 @@ const login = async (email, password) => {
 const verify2fa = async (token, code) => {
 	try {
 		//Verify token
-		const dataToken = await verifyToken(token, process.env.SECRET_SESSION_TWO);
+		const secretSessionTwo = process.env.SECRET_RESET_PASSWORD;
+		const dataToken = await verifyToken(token, secretSessionTwo);
 		if (!dataToken) {
 			throw {
 				status: 401,
@@ -342,7 +343,8 @@ const sendAuthEmail = async email => {
 const verifyAuthEmail = async token => {
 	try {
 		//Verify token
-		const dataToken = await verifyToken(token, process.env.SECRET_SESSION_TWO);
+		const secretSessionTwo = process.env.SECRET_SESSION_TWO;
+		const dataToken = await verifyToken(token, secretSessionTwo);
 		if (!dataToken) {
 			throw {
 				status: 401,
@@ -401,10 +403,8 @@ const verifyAuthEmail = async token => {
 const confirmEmail = async token => {
 	try {
 		//Verify token
-		const dataToken = await verifyToken(
-			token,
-			process.env.SECRET_REGISTER_PASSWORD,
-		);
+		const secretRegisterPassword = process.env.SECRET_REGISTER_PASSWORD;
+		const dataToken = await verifyToken(token, secretRegisterPassword);
 
 		if (!dataToken) {
 			throw {
@@ -505,10 +505,8 @@ const forgotPassword = async email => {
 const resetPassword = async (token, password) => {
 	try {
 		// Verifiica el token
-		const dataToken = await verifyToken(
-			token,
-			process.env.SECRET_RESET_PASSWORD,
-		);
+		const secretResetPassword = process.env.SECRET_RESET_PASSWORD;
+		const dataToken = await verifyToken(token, secretResetPassword);
 		if (!dataToken) {
 			throw {
 				status: 403,

@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 
 async function mail(data) {
 	// Url file
-	const url = `${__dirname}/../emailTemplates/${data.template}`;
+	const url = `${__dirname}/../templates/${data.template}`;
 	// Read file
 	const file = fs.readFileSync(url, 'utf-8');
 	// Render file

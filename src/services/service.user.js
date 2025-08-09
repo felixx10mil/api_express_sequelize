@@ -43,15 +43,12 @@ const getUserById = async id => {
  * @param {*} body
  * @returns
  */
-const accountUpdate = async (id, body) => {
+const accountUpdate = async (id, { currentPassword, email, name }) => {
 	try {
-		// Verify the existence of the e-mail address
-		// Avoid a duplication error.
+		// Verifica que el e-mail a actulizar no este asignado a otro usuario
+		// Esto con el fin de evitar un error 409
 		const checkEmail = await User.count({
-			where: {
-				email: body.email,
-				id: { [Op.ne]: id },
-			},
+			where: { email, id: { [Op.ne]: id } },
 		});
 		if (checkEmail) {
 			throw {
@@ -70,7 +67,7 @@ const accountUpdate = async (id, body) => {
 		}
 
 		// Checar contraseña
-		if (!(await decrypt(body.currentPassword, user.password))) {
+		if (!(await decrypt(currentPassword, user.password))) {
 			throw {
 				status: 400,
 				message: 'INVALID_PASSWORD',
@@ -78,7 +75,7 @@ const accountUpdate = async (id, body) => {
 		}
 
 		// Update
-		await user.update({ name: body.name, email: body.email });
+		await user.update({ name, email });
 
 		// Return
 		return 'Information updated.';
@@ -94,7 +91,8 @@ const accountUpdate = async (id, body) => {
  * @param {*} body
  * @returns
  */
-const passwordUpdate = async (id, body) => {
+
+const passwordUpdate = async (id, { currentPassword, newPassword }) => {
 	try {
 		// Buscar usuario
 		const user = await User.findByPk(id);
@@ -106,7 +104,7 @@ const passwordUpdate = async (id, body) => {
 		}
 
 		// Checar contraseña
-		if (!(await decrypt(body.currentPassword, user.password))) {
+		if (!(await decrypt(currentPassword, user.password))) {
 			throw {
 				status: 400,
 				message: 'INVALID_PASSWORD',
@@ -114,7 +112,7 @@ const passwordUpdate = async (id, body) => {
 		}
 
 		// Update password
-		await user.update({ password: body.newPassword });
+		await user.update({ password: newPassword });
 
 		// Message
 		return 'Information updated.';
@@ -130,7 +128,7 @@ const passwordUpdate = async (id, body) => {
  * @param {*} body
  * @returns
  */
-const profileUpdate = async (id, body) => {
+const profileUpdate = async (id, { first_name, last_name, biography }) => {
 	try {
 		// Buscar profile
 		const profile = await Profile.findOne({ where: { user_id: id } });
@@ -142,11 +140,7 @@ const profileUpdate = async (id, body) => {
 		}
 
 		// Update profile
-		await profile.update({
-			first_name: body.first_name,
-			last_name: body.last_name,
-			biography: body.biography,
-		});
+		await profile.update({ first_name, last_name, biography });
 
 		// Messagge
 		return 'Information updated.';
